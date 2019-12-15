@@ -55,13 +55,13 @@ namespace LunarLander
             rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
             rsx += rsdx;
-            if (rsx > this.Width - pictureBox3.Width)
+            if (rsx > panel1.Width - pictureBox3.Width)
             {
                 rsx = 0;
             } // end if
             if (rsx < 0)
             {
-                rsx = Convert.ToDouble(this.Width - pictureBox3.Width);
+                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
             } // end if
 
             rsy += rsdy;
@@ -71,7 +71,7 @@ namespace LunarLander
             } // end if 
             if (rsy < 0)
             {
-                rsy = Convert.ToDouble(this.Height - pictureBox3.Height);
+                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
             } // end if
 
             pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
@@ -80,23 +80,23 @@ namespace LunarLander
             rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
             rsx1 += rsdx1;
-            if (rsx1 > this.Width - pictureBox4.Width)
+            if (rsx1 > panel1.Width - pictureBox4.Width)
             {
                 rsx1 = 0;
             } // end if
             if (rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(this.Width - pictureBox4.Width);
+                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
             } // end if
 
             rsy1 += rsdy1;
-            if (rsy1 > this.Height - pictureBox4.Height)
+            if (rsy1 > panel1.Height - pictureBox4.Height)
             {
                 rsy1 = 0;
             } // end if 
             if (rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(this.Height - pictureBox4.Height);
+                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
             } // end if
 
             pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
@@ -105,23 +105,23 @@ namespace LunarLander
             rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
             rsx2 += rsdx2;
-            if (rsx2 > this.Width - pictureBox5.Width)
+            if (rsx2 > panel1.Width - pictureBox5.Width)
             {
                 rsx2 = 0;
             } // end if
             if (rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(this.Width - pictureBox5.Width);
+                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
             } // end if
 
             rsy2 += rsdy2;
-            if (rsy2 > this.Height - pictureBox5.Height)
+            if (rsy2 > panel1.Height - pictureBox5.Height)
             {
                 rsy2 = 0;
             } // end if 
             if (rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(this.Height - pictureBox5.Height);
+                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
             } // end if
 
             pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
@@ -130,23 +130,23 @@ namespace LunarLander
         private void moveShip()
         {
             x += dx;
-            if (x > this.Width - pictureBox1.Width)
+            if (x > panel1.Width - pictureBox1.Width)
             {
                 x = 0;
             } // end if
             if (x < 0)
             {
-                x = Convert.ToDouble(this.Width - pictureBox1.Width);
+                x = Convert.ToDouble(panel1.Width - pictureBox1.Width);
             } // end if
 
             y += dy;
-            if (y > this.Height - pictureBox1.Height)
+            if (y > panel1.Height - pictureBox1.Height)
             {
                 y = 0;
             } // end if 
             if (y < 0)
             {
-                y = Convert.ToDouble(this.Height - pictureBox1.Height);
+                y = Convert.ToDouble(panel1.Height - pictureBox1.Height);
             } // end if
 
             pictureBox1.Location = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
@@ -284,38 +284,38 @@ namespace LunarLander
             dx = Convert.ToDouble(roller.Next(5) - 2);
             dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(this.Width));
-            y = Convert.ToDouble(roller.Next(this.Height));
+            x = Convert.ToDouble(roller.Next(panel1.Width));
+            y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(this.Width - pictureBox2.Width);
-            platY = roller.Next(this.Height - pictureBox2.Height);
+            platX = roller.Next(panel1.Width - pictureBox2.Width);
+            platY = roller.Next(panel1.Height - pictureBox2.Height);
             pictureBox2.Location = new Point(platX, platY);
 
             rsdx = Convert.ToDouble(roller.Next(5) - 2);
             rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(this.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(this.Height - pictureBox3.Height));
-            speX = roller.Next(this.Width - pictureBox3.Width);
-            speY = roller.Next(this.Height - pictureBox3.Height);
+            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
+            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
+            speX = roller.Next(panel1.Width - pictureBox3.Width);
+            speY = roller.Next(panel1.Height - pictureBox3.Height);
             pictureBox3.Location = new Point(speX, speY);
 
             rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
             rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(this.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(this.Height - pictureBox4.Height));
-            speX1 = roller.Next(this.Width - pictureBox4.Width);
-            speY1 = roller.Next(this.Height - pictureBox4.Height);
+            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
+            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
             pictureBox4.Location = new Point(speX1, speY1);
 
             rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
             rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(this.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(this.Height - pictureBox5.Height));
-            speX2 = roller.Next(this.Width - pictureBox5.Width);
-            speY2 = roller.Next(this.Height - pictureBox5.Height);
+            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
+            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
             pictureBox5.Location = new Point(speX2, speY2);
 
             timer1.Enabled = true;
