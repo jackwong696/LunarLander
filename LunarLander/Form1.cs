@@ -39,7 +39,7 @@ namespace LunarLander
 
             score += 100;
 
-            pictureBox1.Image = imageList1.Images[0];
+            pictureBox1.BackgroundImage = imageList1.Images[0];
 
             switch (level)
             {
@@ -564,15 +564,15 @@ namespace LunarLander
             switch (e.KeyData)
             {
                 case Keys.Up:
-                    pictureBox1.Image = imageList1.Images[0];
+                    pictureBox1.BackgroundImage = imageList1.Images[0];
                     dy -= 2;
                     break;
                 case Keys.Left:
-                    pictureBox1.Image = imageList1.Images[0];
+                    pictureBox1.BackgroundImage = imageList1.Images[0];
                     dx++;
                     break;
                 case Keys.Right:
-                    pictureBox1.Image = imageList1.Images[0];
+                    pictureBox1.BackgroundImage = imageList1.Images[0];
                     dx--;
                     break;
                 default:
