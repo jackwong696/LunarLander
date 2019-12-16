@@ -51,30 +51,37 @@ namespace LunarLander
         {
             Random roller = new Random();
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            int specInterMove;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
-            {
-                rsx = 0;
-            } // end if
-            if (rsx < 0)
-            {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
-            } // end if
+            specInterMove = roller.Next(50);
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
-            {
-                rsy = 0;
-            } // end if 
-            if (rsy < 0)
-            {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
-            } // end if
+            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            for (int i = 0; i < specInterMove; i++)
+            {
+                rsx += rsdx;
+                if (rsx > panel1.Width - pictureBox3.Width)
+                {
+                    rsx = 0;
+                } // end if
+                if (rsx < 0)
+                {
+                    rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                } // end if
+
+                rsy += rsdy;
+                if (rsy > this.Height - pictureBox3.Height)
+                {
+                    rsy = 0;
+                } // end if 
+                if (rsy < 0)
+                {
+                    rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                } // end if
+
+                pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            }
 
             rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
             rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
@@ -243,7 +250,12 @@ namespace LunarLander
             label3.Text = "Fuel: " + fuel;
             label4.Text = "Ships: " + ships;
             label5.Text = "Score: " + score;
-            label6.Text = "Spetacles1 Location: " + pictureBox3.Location.X + ", " + pictureBox3.Location.Y + Environment.NewLine + "Spetacles2 Location: " + pictureBox4.Location.X + ", " + pictureBox4.Location.Y + Environment.NewLine + "Spetacles3 Location: " + pictureBox5.Location.X + ", " + pictureBox5.Location.Y;
+            label6.Text = "Spetacles1 Location: " + pictureBox3.Location.X + ", " + pictureBox3.Location.Y + Environment.NewLine
+                + "Displacement x: " + rsdx + " Displacement y: " + rsdy + Environment.NewLine
+                + "Spetacles2 Location: " + pictureBox4.Location.X + ", " + pictureBox4.Location.Y + Environment.NewLine
+                + "Displacement x: " + rsdx1 + " Displacement y: " + rsdy1 + Environment.NewLine
+                + "Spetacles3 Location: " + pictureBox5.Location.X + ", " + pictureBox5.Location.Y + Environment.NewLine
+                + "Displacement x: " + rsdx2 + " Displacement y: " + rsdy2;
             label7.Text = "Platform location: " + pictureBox2.Location.X + ", " + pictureBox2.Location.Y;
             label8.Text = "Ship location: " + pictureBox1.Location.X + ", " + pictureBox1.Location.Y;
             //label6.Text = "Picturebox 1 Bound: " + pictureBox1.Bounds;
