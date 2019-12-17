@@ -19,7 +19,7 @@ namespace LunarLander
         private int fuel = 9999999;
         private int ships = 3;
         private int score = 0;
-        private int level = 5;
+        private int level = 7;
         Rectangle rLander;
         Rectangle rPlatform;
         Rectangle rSpectacle;
@@ -36,6 +36,10 @@ namespace LunarLander
         private void timer1_Tick(object sender, EventArgs e)
         {
             dy += .5;
+            if (level >= 6)
+            {
+                dy += 0.5;
+            }
 
             score += 100;
 
@@ -55,6 +59,12 @@ namespace LunarLander
                     moveSpectacleThree();
                     break;
                 case 5:
+                    moveSpectacleFour();
+                    break;
+                case 6:
+                    moveSpectacleFour();
+                    break;
+                case 7:
                     moveSpectacleFour();
                     break;
                 default:
@@ -77,6 +87,12 @@ namespace LunarLander
                     checkCollideThree();
                     break;
                 case 5:
+                    checkCollideThree();
+                    break;
+                case 6:
+                    checkCollideThree();
+                    break;
+                case 7:
                     checkCollideThree();
                     break;
                 default:
@@ -644,6 +660,12 @@ namespace LunarLander
                 case 5:
                     initLvlFour();
                     break;
+                case 6:
+                    initLvlFour();
+                    break;
+                case 7:
+                    initLvlSeven();
+                    break;
                 default:
                     MessageBox.Show("Something have gone wrong. The application will close now.");
                     Application.Exit();
@@ -809,6 +831,54 @@ namespace LunarLander
             platX = roller.Next(panel1.Width - pictureBox2.Width);
             platY = roller.Next(panel1.Height - pictureBox2.Height);
             pictureBox2.Location = new Point(platX, platY);
+
+            rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+
+            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
+            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
+            speX = roller.Next(panel1.Width - pictureBox3.Width);
+            speY = roller.Next(panel1.Height - pictureBox3.Height);
+            pictureBox3.Location = new Point(speX, speY);
+            pictureBox3.Visible = true;
+
+            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+
+            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
+            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
+            pictureBox4.Location = new Point(speX1, speY1);
+            pictureBox4.Visible = true;
+
+            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+
+            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
+            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
+            pictureBox5.Location = new Point(speX2, speY2);
+            pictureBox5.Visible = true;
+        }
+
+        public void initLvlSeven()
+        {
+            Random roller = new Random();
+            int platX, platY; // platform location points.
+            int speX, speY, speX1, speY1, speX2, speY2; // spetacle location points.
+
+            dx = Convert.ToDouble(roller.Next(5) - 2);
+            dy = Convert.ToDouble(roller.Next(5) - 2);
+
+            x = Convert.ToDouble(roller.Next(panel1.Width));
+            y = Convert.ToDouble(roller.Next(panel1.Height));
+
+            platX = roller.Next(panel1.Width - pictureBox2.Width);
+            platY = roller.Next(panel1.Height - pictureBox2.Height);
+            pictureBox2.Location = new Point(platX, platY);
+            pictureBox2.Width = 26;
 
             rsdx = Convert.ToDouble(roller.Next(5) - 2);
             rsdy = Convert.ToDouble(roller.Next(5) - 2);
