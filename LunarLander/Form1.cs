@@ -26,6 +26,18 @@ namespace LunarLander
         Rectangle rSpectacle1;
         Rectangle rSpectacle2;
 
+        PictureBox pictureBox1 = new PictureBox();
+        PictureBox pictureBox2 = new PictureBox();
+        PictureBox pictureBox3 = new PictureBox();
+        PictureBox pictureBox4 = new PictureBox();
+        PictureBox pictureBox5 = new PictureBox();
+
+        //pictureBox6.Height = 26;
+        //pictureBox6.Width = 26;
+        //pictureBox6.Location = new Point(250, 250);
+        //this.panel1.Controls.Add(pictureBox6);
+        //pictureBox6.BringToFront();
+
         public Form1()
         {
             InitializeComponent();
@@ -643,6 +655,9 @@ namespace LunarLander
 
         public void initGame()
         {
+            initLunarRover();
+            initPLatform();
+
             switch (level)
             {
                 case 1:
@@ -650,21 +665,40 @@ namespace LunarLander
                     break;
                 case 2:
                     initLvlTwo();
+                    initObstacle1();
                     break;
                 case 3:
                     initLvlThree();
+                    initObstacle1();
+                    initObstacle2();
                     break;
                 case 4:
                     initLvlFour();
+                    initObstacle1();
+                    initObstacle2();
+                    initObstacle3();
                     break;
                 case 5:
                     initLvlFour();
+                    initObstacle1();
+                    initObstacle2();
+                    initObstacle3();
                     break;
                 case 6:
                     initLvlFour();
+                    initObstacle1();
+                    initObstacle2();
+                    initObstacle3();
                     break;
                 case 7:
                     initLvlSeven();
+                    initObstacle1();
+                    initObstacle2();
+                    initObstacle3();
+                    break;
+                case 8:
+                    MessageBox.Show("You have complete all the level. Application will now close");
+                    Application.Exit();
                     break;
                 default:
                     MessageBox.Show("Something have gone wrong. The application will close now.");
@@ -673,6 +707,69 @@ namespace LunarLander
             }
             timer1.Enabled = true;
         } // end initGame
+
+        public void initLunarRover()
+        {
+            pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            pictureBox1.Location = new System.Drawing.Point(206, 50);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(20, 22);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            this.panel1.Controls.Add(pictureBox1);
+        }
+
+        public void initPLatform()
+        {
+            pictureBox2.Location = new System.Drawing.Point(206, 103);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(52, 10);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            pictureBox2.BackgroundImage = imageList1.Images[1];
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(pictureBox2);
+        }
+
+        public void initObstacle1()
+        {
+            pictureBox3.Location = new System.Drawing.Point(370, 50);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(20, 22);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 10;
+            pictureBox3.TabStop = false;
+            pictureBox3.BackgroundImage = imageList1.Images[2];
+            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(pictureBox3);
+        }
+
+        public void initObstacle2()
+        {
+            pictureBox4.Location = new System.Drawing.Point(370, 50);
+            pictureBox4.Name = "pictureBox3";
+            pictureBox4.Size = new System.Drawing.Size(20, 22);
+            pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 10;
+            pictureBox4.TabStop = false;
+            pictureBox4.BackgroundImage = imageList1.Images[3];
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(pictureBox4);
+        }
+
+        public void initObstacle3()
+        {
+            pictureBox5.Location = new System.Drawing.Point(370, 50);
+            pictureBox5.Name = "pictureBox3";
+            pictureBox5.Size = new System.Drawing.Size(20, 22);
+            pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox5.TabIndex = 10;
+            pictureBox5.TabStop = false;
+            pictureBox5.BackgroundImage = imageList1.Images[4];
+            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(pictureBox5);
+        }
 
         public void initLvlOne()
         {
@@ -720,6 +817,7 @@ namespace LunarLander
             //speX2 = roller.Next(panel1.Width - pictureBox5.Width);
             //speY2 = roller.Next(panel1.Height - pictureBox5.Height);
             //pictureBox5.Location = new Point(speX2, speY2);
+
         }
 
         public void initLvlTwo()
@@ -803,6 +901,8 @@ namespace LunarLander
             speX1 = roller.Next(panel1.Width - pictureBox4.Width);
             speY1 = roller.Next(panel1.Height - pictureBox4.Height);
             pictureBox4.Location = new Point(speX1, speY1);
+            pictureBox4.BackgroundImage = imageList1.Images[3];
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox4.Visible = true;
             pictureBox5.Visible = false;
 
@@ -850,6 +950,8 @@ namespace LunarLander
             speX1 = roller.Next(panel1.Width - pictureBox4.Width);
             speY1 = roller.Next(panel1.Height - pictureBox4.Height);
             pictureBox4.Location = new Point(speX1, speY1);
+            pictureBox4.BackgroundImage = imageList1.Images[3];
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox4.Visible = true;
 
             rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
@@ -860,6 +962,8 @@ namespace LunarLander
             speX2 = roller.Next(panel1.Width - pictureBox5.Width);
             speY2 = roller.Next(panel1.Height - pictureBox5.Height);
             pictureBox5.Location = new Point(speX2, speY2);
+            pictureBox5.BackgroundImage = imageList1.Images[4];
+            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox5.Visible = true;
         }
 
@@ -898,6 +1002,8 @@ namespace LunarLander
             speX1 = roller.Next(panel1.Width - pictureBox4.Width);
             speY1 = roller.Next(panel1.Height - pictureBox4.Height);
             pictureBox4.Location = new Point(speX1, speY1);
+            pictureBox4.BackgroundImage = imageList1.Images[3];
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox4.Visible = true;
 
             rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
@@ -908,6 +1014,8 @@ namespace LunarLander
             speX2 = roller.Next(panel1.Width - pictureBox5.Width);
             speY2 = roller.Next(panel1.Height - pictureBox5.Height);
             pictureBox5.Location = new Point(speX2, speY2);
+            pictureBox5.BackgroundImage = imageList1.Images[4];
+            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox5.Visible = true;
         }
     } // end class
