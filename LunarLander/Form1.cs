@@ -12,39 +12,40 @@ namespace LunarLander
 {
     public partial class Form1 : Form
     {
-        private double x, y; // ships location points
-        private double dx, dy; // ships displacement
-        private double rsx, rsy, rsx1, rsy1, rsx2, rsy2, rsx3, rsy3, rsx4, rsy4, rsx5, rsy5, rsx6, rsy6, rsx7, rsy7, rsx8, rsy8, rsx9, rsy9; // obstacles location points
-        private double rsdx, rsdy, rsdx1, rsdy1, rsdx2, rsdy2, rsdx3, rsdy3, rsdx4, rsdy4, rsdx5, rsdy5, rsdx6, rsdy6, rsdx7, rsdy7, rsdx8, rsdy8, rsdx9, rsdy9; // obstacles displacement 
-        private int fuel = 9999999;
-        private int ships = 5;
-        private int score = 0;
-        private int level = 1;
-        Rectangle rLander;
-        Rectangle rPlatform;
-        Rectangle rObstacle;
-        Rectangle rObstacle1;
-        Rectangle rObstacle2;
-        Rectangle rObstacle3;
-        Rectangle rObstacle4;
-        Rectangle rObstacle5;
-        Rectangle rObstacle6;
-        Rectangle rObstacle7;
-        Rectangle rObstacle8;
-        Rectangle rObstacle9;
+        // private double x, y; // ships location points
+        // private double dx, dy; // ships displacement
+        // private double rsx, rsy, rsx1, rsy1, rsx2, rsy2, rsx3, rsy3, rsx4, rsy4, rsx5, rsy5, rsx6, rsy6, rsx7, rsy7, rsx8, rsy8, rsx9, rsy9; // obstacles location points
+        // private double rsdx, rsdy, rsdx1, rsdy1, rsdx2, rsdy2, rsdx3, rsdy3, rsdx4, rsdy4, rsdx5, rsdy5, rsdx6, rsdy6, rsdx7, rsdy7, rsdx8, rsdy8, rsdx9, rsdy9; // obstacles displacement 
+        // private int fuel = 9999999;
+        // private int ships = 5;
+        // private int score = 0;
+        // private int level = 14;
 
-        PictureBox pictureBox1 = new PictureBox();
-        PictureBox pictureBox2 = new PictureBox();
-        PictureBox pictureBox3 = new PictureBox();
-        PictureBox pictureBox4 = new PictureBox();
-        PictureBox pictureBox5 = new PictureBox();
-        PictureBox pictureBox6 = new PictureBox();
-        PictureBox pictureBox7 = new PictureBox();
-        PictureBox pictureBox8 = new PictureBox();
-        PictureBox pictureBox9 = new PictureBox();
-        PictureBox pictureBox10 = new PictureBox();
-        PictureBox pictureBox11 = new PictureBox();
-        PictureBox pictureBox12 = new PictureBox();
+        //Rectangle rLander;
+        //Rectangle rPlatform;
+        //Rectangle rObstacle;
+        //Rectangle rObstacle1;
+        //Rectangle rObstacle2;
+        //Rectangle rObstacle3;
+        //Rectangle rObstacle4;
+        //Rectangle rObstacle5;
+        //Rectangle rObstacle6;
+        //Rectangle rObstacle7;
+        //Rectangle rObstacle8;
+        //Rectangle rObstacle9;
+
+        //PictureBox GlobalVar.pictureBox1 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox2 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox3 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox4 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox5 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox6 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox7 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox8 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox9 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox10 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox11 = new PictureBox();
+        //PictureBox GlobalVar.pictureBox12 = new PictureBox();
 
         public Form1()
         {
@@ -55,17 +56,17 @@ namespace LunarLander
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            dy += .5;
-            if (level >= 6)
+            GlobalVar.dy += .5;
+            if (GlobalVar.level >= 6)
             {
-                dy += 0.5;
+                GlobalVar.dy += 0.5;
             }
 
-            score += 100;
+            GlobalVar.score += 100;
 
-            pictureBox1.BackgroundImage = imageList1.Images[0];
+            GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
 
-            switch (level)
+            switch (GlobalVar.level)
             {
                 case 1:
                     break;
@@ -114,7 +115,7 @@ namespace LunarLander
                     break;
             }
             moveShip();
-            switch (level)
+            switch (GlobalVar.level)
             {
                 case 1:
                     break;
@@ -170,1400 +171,1400 @@ namespace LunarLander
         {
             Random roller = new Random();
             
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
         }
 
         private void moveObstacleTwo()
         {
             Random roller = new Random();
             
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
         }
 
         private void moveObstacleThree()
         {
             Random roller = new Random();
             
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
         }
 
         private void moveObstacleFour()
         {
             Random roller = new Random();
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
         }
 
         private void moveObstacleFive()
         {
             Random roller = new Random();
             
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
         }
 
         private void moveObstacleSix()
         {
             Random roller = new Random();
             
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 += rsdx5;
-            if (rsx5 > panel1.Width - pictureBox8.Width)
+            GlobalVar.rsx5 += GlobalVar.rsdx5;
+            if (GlobalVar.rsx5 > panel1.Width - GlobalVar.pictureBox8.Width)
             {
-                rsx5 = 0;
+                GlobalVar.rsx5 = 0;
             } // end if
-            if (rsx5 < 0)
+            if (GlobalVar.rsx5 < 0)
             {
-                rsx5 = Convert.ToDouble(panel1.Width - pictureBox8.Width);
+                GlobalVar.rsx5 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox8.Width);
             } // end if
 
-            rsy5 += rsdy5;
-            if (rsy5 > panel1.Height - pictureBox8.Height)
+            GlobalVar.rsy5 += GlobalVar.rsdy5;
+            if (GlobalVar.rsy5 > panel1.Height - GlobalVar.pictureBox8.Height)
             {
-                rsy5 = 0;
+                GlobalVar.rsy5 = 0;
             } // end if 
-            if (rsy5 < 0)
+            if (GlobalVar.rsy5 < 0)
             {
-                rsy5 = Convert.ToDouble(panel1.Height - pictureBox8.Height);
+                GlobalVar.rsy5 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox8.Height);
             } // end if
 
-            pictureBox8.Location = new Point(Convert.ToInt32(rsx5), Convert.ToInt32(rsy5));
+            GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
         }
 
         private void moveObstacleSeven()
         {
             Random roller = new Random();
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 += rsdx5;
-            if (rsx5 > panel1.Width - pictureBox8.Width)
+            GlobalVar.rsx5 += GlobalVar.rsdx5;
+            if (GlobalVar.rsx5 > panel1.Width - GlobalVar.pictureBox8.Width)
             {
-                rsx5 = 0;
+                GlobalVar.rsx5 = 0;
             } // end if
-            if (rsx5 < 0)
+            if (GlobalVar.rsx5 < 0)
             {
-                rsx5 = Convert.ToDouble(panel1.Width - pictureBox8.Width);
+                GlobalVar.rsx5 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox8.Width);
             } // end if
 
-            rsy5 += rsdy5;
-            if (rsy5 > panel1.Height - pictureBox8.Height)
+            GlobalVar.rsy5 += GlobalVar.rsdy5;
+            if (GlobalVar.rsy5 > panel1.Height - GlobalVar.pictureBox8.Height)
             {
-                rsy5 = 0;
+                GlobalVar.rsy5 = 0;
             } // end if 
-            if (rsy5 < 0)
+            if (GlobalVar.rsy5 < 0)
             {
-                rsy5 = Convert.ToDouble(panel1.Height - pictureBox8.Height);
+                GlobalVar.rsy5 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox8.Height);
             } // end if
 
-            pictureBox8.Location = new Point(Convert.ToInt32(rsx5), Convert.ToInt32(rsy5));
+            GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 += rsdx6;
-            if (rsx6 > panel1.Width - pictureBox9.Width)
+            GlobalVar.rsx6 += GlobalVar.rsdx6;
+            if (GlobalVar.rsx6 > panel1.Width - GlobalVar.pictureBox9.Width)
             {
-                rsx6 = 0;
+                GlobalVar.rsx6 = 0;
             } // end if
-            if (rsx6 < 0)
+            if (GlobalVar.rsx6 < 0)
             {
-                rsx6 = Convert.ToDouble(panel1.Width - pictureBox9.Width);
+                GlobalVar.rsx6 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox9.Width);
             } // end if
 
-            rsy6 += rsdy6;
-            if (rsy6 > panel1.Height - pictureBox9.Height)
+            GlobalVar.rsy6 += GlobalVar.rsdy6;
+            if (GlobalVar.rsy6 > panel1.Height - GlobalVar.pictureBox9.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy6 < 0)
+            if (GlobalVar.rsy6 < 0)
             {
-                rsy6 = Convert.ToDouble(panel1.Height - pictureBox9.Height);
+                GlobalVar.rsy6 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox9.Height);
             } // end if
 
-            pictureBox9.Location = new Point(Convert.ToInt32(rsx6), Convert.ToInt32(rsy6));
+            GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
         }
 
         private void moveObstacleEight()
         {
             Random roller = new Random();
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 += rsdx5;
-            if (rsx5 > panel1.Width - pictureBox8.Width)
+            GlobalVar.rsx5 += GlobalVar.rsdx5;
+            if (GlobalVar.rsx5 > panel1.Width - GlobalVar.pictureBox8.Width)
             {
-                rsx5 = 0;
+                GlobalVar.rsx5 = 0;
             } // end if
-            if (rsx5 < 0)
+            if (GlobalVar.rsx5 < 0)
             {
-                rsx5 = Convert.ToDouble(panel1.Width - pictureBox8.Width);
+                GlobalVar.rsx5 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox8.Width);
             } // end if
 
-            rsy5 += rsdy5;
-            if (rsy5 > panel1.Height - pictureBox8.Height)
+            GlobalVar.rsy5 += GlobalVar.rsdy5;
+            if (GlobalVar.rsy5 > panel1.Height - GlobalVar.pictureBox8.Height)
             {
-                rsy5 = 0;
+                GlobalVar.rsy5 = 0;
             } // end if 
-            if (rsy5 < 0)
+            if (GlobalVar.rsy5 < 0)
             {
-                rsy5 = Convert.ToDouble(panel1.Height - pictureBox8.Height);
+                GlobalVar.rsy5 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox8.Height);
             } // end if
 
-            pictureBox8.Location = new Point(Convert.ToInt32(rsx5), Convert.ToInt32(rsy5));
+            GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 += rsdx6;
-            if (rsx6 > panel1.Width - pictureBox9.Width)
+            GlobalVar.rsx6 += GlobalVar.rsdx6;
+            if (GlobalVar.rsx6 > panel1.Width - GlobalVar.pictureBox9.Width)
             {
-                rsx6 = 0;
+                GlobalVar.rsx6 = 0;
             } // end if
-            if (rsx6 < 0)
+            if (GlobalVar.rsx6 < 0)
             {
-                rsx6 = Convert.ToDouble(panel1.Width - pictureBox9.Width);
+                GlobalVar.rsx6 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox9.Width);
             } // end if
 
-            rsy6 += rsdy6;
-            if (rsy6 > panel1.Height - pictureBox9.Height)
+            GlobalVar.rsy6 += GlobalVar.rsdy6;
+            if (GlobalVar.rsy6 > panel1.Height - GlobalVar.pictureBox9.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy6 < 0)
+            if (GlobalVar.rsy6 < 0)
             {
-                rsy6 = Convert.ToDouble(panel1.Height - pictureBox9.Height);
+                GlobalVar.rsy6 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox9.Height);
             } // end if
 
-            pictureBox9.Location = new Point(Convert.ToInt32(rsx6), Convert.ToInt32(rsy6));
+            GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
             
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 += rsdx7;
-            if (rsx7 > panel1.Width - pictureBox10.Width)
+            GlobalVar.rsx7 += GlobalVar.rsdx7;
+            if (GlobalVar.rsx7 > panel1.Width - GlobalVar.pictureBox10.Width)
             {
-                rsx7 = 0;
+                GlobalVar.rsx7 = 0;
             } // end if
-            if (rsx7 < 0)
+            if (GlobalVar.rsx7 < 0)
             {
-                rsx7 = Convert.ToDouble(panel1.Width - pictureBox10.Width);
+                GlobalVar.rsx7 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox10.Width);
             } // end if
 
-            rsy7 += rsdy7;
-            if (rsy7 > panel1.Height - pictureBox10.Height)
+            GlobalVar.rsy7 += GlobalVar.rsdy7;
+            if (GlobalVar.rsy7 > panel1.Height - GlobalVar.pictureBox10.Height)
             {
-                rsy7 = 0;
+                GlobalVar.rsy7 = 0;
             } // end if 
-            if (rsy7 < 0)
+            if (GlobalVar.rsy7 < 0)
             {
-                rsy7 = Convert.ToDouble(panel1.Height - pictureBox10.Height);
+                GlobalVar.rsy7 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox10.Height);
             } // end if
 
-            pictureBox10.Location = new Point(Convert.ToInt32(rsx7), Convert.ToInt32(rsy7));
+            GlobalVar.pictureBox10.Location = new Point(Convert.ToInt32(GlobalVar.rsx7), Convert.ToInt32(GlobalVar.rsy7));
         }
 
         private void moveObstacleNine()
         {
             Random roller = new Random();
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 += rsdx5;
-            if (rsx5 > panel1.Width - pictureBox8.Width)
+            GlobalVar.rsx5 += GlobalVar.rsdx5;
+            if (GlobalVar.rsx5 > panel1.Width - GlobalVar.pictureBox8.Width)
             {
-                rsx5 = 0;
+                GlobalVar.rsx5 = 0;
             } // end if
-            if (rsx5 < 0)
+            if (GlobalVar.rsx5 < 0)
             {
-                rsx5 = Convert.ToDouble(panel1.Width - pictureBox8.Width);
+                GlobalVar.rsx5 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox8.Width);
             } // end if
 
-            rsy5 += rsdy5;
-            if (rsy5 > panel1.Height - pictureBox8.Height)
+            GlobalVar.rsy5 += GlobalVar.rsdy5;
+            if (GlobalVar.rsy5 > panel1.Height - GlobalVar.pictureBox8.Height)
             {
-                rsy5 = 0;
+                GlobalVar.rsy5 = 0;
             } // end if 
-            if (rsy5 < 0)
+            if (GlobalVar.rsy5 < 0)
             {
-                rsy5 = Convert.ToDouble(panel1.Height - pictureBox8.Height);
+                GlobalVar.rsy5 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox8.Height);
             } // end if
 
-            pictureBox8.Location = new Point(Convert.ToInt32(rsx5), Convert.ToInt32(rsy5));
+            GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
             
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 += rsdx6;
-            if (rsx6 > panel1.Width - pictureBox9.Width)
+            GlobalVar.rsx6 += GlobalVar.rsdx6;
+            if (GlobalVar.rsx6 > panel1.Width - GlobalVar.pictureBox9.Width)
             {
-                rsx6 = 0;
+                GlobalVar.rsx6 = 0;
             } // end if
-            if (rsx6 < 0)
+            if (GlobalVar.rsx6 < 0)
             {
-                rsx6 = Convert.ToDouble(panel1.Width - pictureBox9.Width);
+                GlobalVar.rsx6 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox9.Width);
             } // end if
 
-            rsy6 += rsdy6;
-            if (rsy6 > panel1.Height - pictureBox9.Height)
+            GlobalVar.rsy6 += GlobalVar.rsdy6;
+            if (GlobalVar.rsy6 > panel1.Height - GlobalVar.pictureBox9.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy6 < 0)
+            if (GlobalVar.rsy6 < 0)
             {
-                rsy6 = Convert.ToDouble(panel1.Height - pictureBox9.Height);
+                GlobalVar.rsy6 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox9.Height);
             } // end if
 
-            pictureBox9.Location = new Point(Convert.ToInt32(rsx6), Convert.ToInt32(rsy6));
+            GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 += rsdx7;
-            if (rsx7 > panel1.Width - pictureBox10.Width)
+            GlobalVar.rsx7 += GlobalVar.rsdx7;
+            if (GlobalVar.rsx7 > panel1.Width - GlobalVar.pictureBox10.Width)
             {
-                rsx7 = 0;
+                GlobalVar.rsx7 = 0;
             } // end if
-            if (rsx7 < 0)
+            if (GlobalVar.rsx7 < 0)
             {
-                rsx7 = Convert.ToDouble(panel1.Width - pictureBox10.Width);
+                GlobalVar.rsx7 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox10.Width);
             } // end if
 
-            rsy7 += rsdy7;
-            if (rsy7 > panel1.Height - pictureBox10.Height)
+            GlobalVar.rsy7 += GlobalVar.rsdy7;
+            if (GlobalVar.rsy7 > panel1.Height - GlobalVar.pictureBox10.Height)
             {
-                rsy7 = 0;
+                GlobalVar.rsy7 = 0;
             } // end if 
-            if (rsy7 < 0)
+            if (GlobalVar.rsy7 < 0)
             {
-                rsy7 = Convert.ToDouble(panel1.Height - pictureBox10.Height);
+                GlobalVar.rsy7 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox10.Height);
             } // end if
 
-            pictureBox10.Location = new Point(Convert.ToInt32(rsx7), Convert.ToInt32(rsy7));
+            GlobalVar.pictureBox10.Location = new Point(Convert.ToInt32(GlobalVar.rsx7), Convert.ToInt32(GlobalVar.rsy7));
         }
 
         private void moveObstacleTen()
         {
             Random roller = new Random();
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
-            rsx += rsdx;
-            if (rsx > panel1.Width - pictureBox3.Width)
+            GlobalVar.rsx += GlobalVar.rsdx;
+            if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
             {
-                rsx = 0;
+                GlobalVar.rsx = 0;
             } // end if
-            if (rsx < 0)
+            if (GlobalVar.rsx < 0)
             {
-                rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
             } // end if
 
-            rsy += rsdy;
-            if (rsy > this.Height - pictureBox3.Height)
+            GlobalVar.rsy += GlobalVar.rsdy;
+            if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
             {
-                rsy = 0;
+                GlobalVar.rsy = 0;
             } // end if 
-            if (rsy < 0)
+            if (GlobalVar.rsy < 0)
             {
-                rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
             } // end if
 
-            pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+            GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 += rsdx5;
-            if (rsx5 > panel1.Width - pictureBox8.Width)
+            GlobalVar.rsx5 += GlobalVar.rsdx5;
+            if (GlobalVar.rsx5 > panel1.Width - GlobalVar.pictureBox8.Width)
             {
-                rsx5 = 0;
+                GlobalVar.rsx5 = 0;
             } // end if
-            if (rsx5 < 0)
+            if (GlobalVar.rsx5 < 0)
             {
-                rsx5 = Convert.ToDouble(panel1.Width - pictureBox8.Width);
+                GlobalVar.rsx5 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox8.Width);
             } // end if
 
-            rsy5 += rsdy5;
-            if (rsy5 > panel1.Height - pictureBox8.Height)
+            GlobalVar.rsy5 += GlobalVar.rsdy5;
+            if (GlobalVar.rsy5 > panel1.Height - GlobalVar.pictureBox8.Height)
             {
-                rsy5 = 0;
+                GlobalVar.rsy5 = 0;
             } // end if 
-            if (rsy5 < 0)
+            if (GlobalVar.rsy5 < 0)
             {
-                rsy5 = Convert.ToDouble(panel1.Height - pictureBox8.Height);
+                GlobalVar.rsy5 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox8.Height);
             } // end if
 
-            pictureBox8.Location = new Point(Convert.ToInt32(rsx5), Convert.ToInt32(rsy5));
+            GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 += rsdx6;
-            if (rsx6 > panel1.Width - pictureBox9.Width)
+            GlobalVar.rsx6 += GlobalVar.rsdx6;
+            if (GlobalVar.rsx6 > panel1.Width - GlobalVar.pictureBox9.Width)
             {
-                rsx6 = 0;
+                GlobalVar.rsx6 = 0;
             } // end if
-            if (rsx6 < 0)
+            if (GlobalVar.rsx6 < 0)
             {
-                rsx6 = Convert.ToDouble(panel1.Width - pictureBox9.Width);
+                GlobalVar.rsx6 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox9.Width);
             } // end if
 
-            rsy6 += rsdy6;
-            if (rsy6 > panel1.Height - pictureBox9.Height)
+            GlobalVar.rsy6 += GlobalVar.rsdy6;
+            if (GlobalVar.rsy6 > panel1.Height - GlobalVar.pictureBox9.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy6 < 0)
+            if (GlobalVar.rsy6 < 0)
             {
-                rsy6 = Convert.ToDouble(panel1.Height - pictureBox9.Height);
+                GlobalVar.rsy6 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox9.Height);
             } // end if
 
-            pictureBox9.Location = new Point(Convert.ToInt32(rsx6), Convert.ToInt32(rsy6));
+            GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 += rsdx7;
-            if (rsx7 > panel1.Width - pictureBox10.Width)
+            GlobalVar.rsx7 += GlobalVar.rsdx7;
+            if (GlobalVar.rsx7 > panel1.Width - GlobalVar.pictureBox10.Width)
             {
-                rsx7 = 0;
+                GlobalVar.rsx7 = 0;
             } // end if
-            if (rsx7 < 0)
+            if (GlobalVar.rsx7 < 0)
             {
-                rsx7 = Convert.ToDouble(panel1.Width - pictureBox10.Width);
+                GlobalVar.rsx7 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox10.Width);
             } // end if
 
-            rsy7 += rsdy7;
-            if (rsy7 > panel1.Height - pictureBox10.Height)
+            GlobalVar.rsy7 += GlobalVar.rsdy7;
+            if (GlobalVar.rsy7 > panel1.Height - GlobalVar.pictureBox10.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy7 < 0)
+            if (GlobalVar.rsy7 < 0)
             {
-                rsy7 = Convert.ToDouble(panel1.Height - pictureBox10.Height);
+                GlobalVar.rsy7 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox10.Height);
             } // end if
 
-            pictureBox10.Location = new Point(Convert.ToInt32(rsx7), Convert.ToInt32(rsy7));
+            GlobalVar.pictureBox10.Location = new Point(Convert.ToInt32(GlobalVar.rsx7), Convert.ToInt32(GlobalVar.rsy7));
 
-            rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx8 += rsdx8;
-            if (rsx8 > panel1.Width - pictureBox11.Width)
+            GlobalVar.rsx8 += GlobalVar.rsdx8;
+            if (GlobalVar.rsx8 > panel1.Width - GlobalVar.pictureBox11.Width)
             {
-                rsx8 = 0;
+                GlobalVar.rsx8 = 0;
             } // end if
-            if (rsx8 < 0)
+            if (GlobalVar.rsx8 < 0)
             {
-                rsx8 = Convert.ToDouble(panel1.Width - pictureBox11.Width);
+                GlobalVar.rsx8 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox11.Width);
             } // end if
 
-            rsy8 += rsdy8;
-            if (rsy8 > panel1.Height - pictureBox11.Height)
+            GlobalVar.rsy8 += GlobalVar.rsdy8;
+            if (GlobalVar.rsy8 > panel1.Height - GlobalVar.pictureBox11.Height)
             {
-                rsy8 = 0;
+                GlobalVar.rsy8 = 0;
             } // end if 
-            if (rsy8 < 0)
+            if (GlobalVar.rsy8 < 0)
             {
-                rsy8 = Convert.ToDouble(panel1.Height - pictureBox11.Height);
+                GlobalVar.rsy8 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox11.Height);
             } // end if
 
-            pictureBox11.Location = new Point(Convert.ToInt32(rsx8), Convert.ToInt32(rsy8));
+            GlobalVar.pictureBox11.Location = new Point(Convert.ToInt32(GlobalVar.rsx8), Convert.ToInt32(GlobalVar.rsy8));
 
-            rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx9 += rsdx9;
-            if (rsx9 > panel1.Width - pictureBox12.Width)
+            GlobalVar.rsx9 += GlobalVar.rsdx9;
+            if (GlobalVar.rsx9 > panel1.Width - GlobalVar.pictureBox12.Width)
             {
-                rsx9 = 0;
+                GlobalVar.rsx9 = 0;
             } // end if
-            if (rsx9 < 0)
+            if (GlobalVar.rsx9 < 0)
             {
-                rsx9 = Convert.ToDouble(panel1.Width - pictureBox12.Width);
+                GlobalVar.rsx9 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox12.Width);
             } // end if
 
-            rsy9 += rsdy9;
-            if (rsy9 > panel1.Height - pictureBox12.Height)
+            GlobalVar.rsy9 += GlobalVar.rsdy9;
+            if (GlobalVar.rsy9 > panel1.Height - GlobalVar.pictureBox12.Height)
             {
-                rsy9 = 0;
+                GlobalVar.rsy9 = 0;
             } // end if 
-            if (rsy9 < 0)
+            if (GlobalVar.rsy9 < 0)
             {
-                rsy9 = Convert.ToDouble(panel1.Height - pictureBox12.Height);
+                GlobalVar.rsy9 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox12.Height);
             } // end if
 
-            pictureBox12.Location = new Point(Convert.ToInt32(rsx9), Convert.ToInt32(rsy9));
+            GlobalVar.pictureBox12.Location = new Point(Convert.ToInt32(GlobalVar.rsx9), Convert.ToInt32(GlobalVar.rsy9));
         }
 
         private void moveObstacleOneWithSpeed()
@@ -1574,293 +1575,294 @@ namespace LunarLander
 
             specInterMove = roller.Next(50);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
-            rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
             for (int i = 0; i < specInterMove; i++)
             {
-                rsx += rsdx;
-                if (rsx > panel1.Width - pictureBox3.Width)
+                GlobalVar.rsx += GlobalVar.rsdx;
+                if (GlobalVar.rsx > panel1.Width - GlobalVar.pictureBox3.Width)
                 {
-                    rsx = 0;
+                    GlobalVar.rsx = 0;
                 } // end if
-                if (rsx < 0)
+                if (GlobalVar.rsx < 0)
                 {
-                    rsx = Convert.ToDouble(panel1.Width - pictureBox3.Width);
+                    GlobalVar.rsx = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox3.Width);
                 } // end if
 
-                rsy += rsdy;
-                if (rsy > this.Height - pictureBox3.Height)
+                GlobalVar.rsy += GlobalVar.rsdy;
+                if (GlobalVar.rsy > this.Height - GlobalVar.pictureBox3.Height)
                 {
-                    rsy = 0;
+                    GlobalVar.rsy = 0;
                 } // end if 
-                if (rsy < 0)
+                if (GlobalVar.rsy < 0)
                 {
-                    rsy = Convert.ToDouble(panel1.Height - pictureBox3.Height);
+                    GlobalVar.rsy = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox3.Height);
                 } // end if
 
-                pictureBox3.Location = new Point(Convert.ToInt32(rsx), Convert.ToInt32(rsy));
+                GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
             }
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 += rsdx1;
-            if (rsx1 > panel1.Width - pictureBox4.Width)
+            GlobalVar.rsx1 += GlobalVar.rsdx1;
+            if (GlobalVar.rsx1 > panel1.Width - GlobalVar.pictureBox4.Width)
             {
-                rsx1 = 0;
+                GlobalVar.rsx1 = 0;
             } // end if
-            if (rsx1 < 0)
+            if (GlobalVar.rsx1 < 0)
             {
-                rsx1 = Convert.ToDouble(panel1.Width - pictureBox4.Width);
+                GlobalVar.rsx1 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox4.Width);
             } // end if
 
-            rsy1 += rsdy1;
-            if (rsy1 > panel1.Height - pictureBox4.Height)
+            GlobalVar.rsy1 += GlobalVar.rsdy1;
+            if (GlobalVar.rsy1 > panel1.Height - GlobalVar.pictureBox4.Height)
             {
-                rsy1 = 0;
+                GlobalVar.rsy1 = 0;
             } // end if 
-            if (rsy1 < 0)
+            if (GlobalVar.rsy1 < 0)
             {
-                rsy1 = Convert.ToDouble(panel1.Height - pictureBox4.Height);
+                GlobalVar.rsy1 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox4.Height);
             } // end if
 
-            pictureBox4.Location = new Point(Convert.ToInt32(rsx1), Convert.ToInt32(rsy1));
+            GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 += rsdx2;
-            if (rsx2 > panel1.Width - pictureBox5.Width)
+            GlobalVar.rsx2 += GlobalVar.rsdx2;
+            if (GlobalVar.rsx2 > panel1.Width - GlobalVar.pictureBox5.Width)
             {
-                rsx2 = 0;
+                GlobalVar.rsx2 = 0;
             } // end if
-            if (rsx2 < 0)
+            if (GlobalVar.rsx2 < 0)
             {
-                rsx2 = Convert.ToDouble(panel1.Width - pictureBox5.Width);
+                GlobalVar.rsx2 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox5.Width);
             } // end if
 
-            rsy2 += rsdy2;
-            if (rsy2 > panel1.Height - pictureBox5.Height)
+            GlobalVar.rsy2 += GlobalVar.rsdy2;
+            if (GlobalVar.rsy2 > panel1.Height - GlobalVar.pictureBox5.Height)
             {
-                rsy2 = 0;
+                GlobalVar.rsy2 = 0;
             } // end if 
-            if (rsy2 < 0)
+            if (GlobalVar.rsy2 < 0)
             {
-                rsy2 = Convert.ToDouble(panel1.Height - pictureBox5.Height);
+                GlobalVar.rsy2 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox5.Height);
             } // end if
 
-            pictureBox5.Location = new Point(Convert.ToInt32(rsx2), Convert.ToInt32(rsy2));
+            GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 += rsdx3;
-            if (rsx3 > panel1.Width - pictureBox6.Width)
+            GlobalVar.rsx3 += GlobalVar.rsdx3;
+            if (GlobalVar.rsx3 > panel1.Width - GlobalVar.pictureBox6.Width)
             {
-                rsx3 = 0;
+                GlobalVar.rsx3 = 0;
             } // end if
-            if (rsx3 < 0)
+            if (GlobalVar.rsx3 < 0)
             {
-                rsx3 = Convert.ToDouble(panel1.Width - pictureBox6.Width);
+                GlobalVar.rsx3 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox6.Width);
             } // end if
 
-            rsy3 += rsdy3;
-            if (rsy3 > panel1.Height - pictureBox6.Height)
+            GlobalVar.rsy3 += GlobalVar.rsdy3;
+            if (GlobalVar.rsy3 > panel1.Height - GlobalVar.pictureBox6.Height)
             {
-                rsy3 = 0;
+                GlobalVar.rsy3 = 0;
             } // end if 
-            if (rsy3 < 0)
+            if (GlobalVar.rsy3 < 0)
             {
-                rsy3 = Convert.ToDouble(panel1.Height - pictureBox6.Height);
+                GlobalVar.rsy3 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox6.Height);
             } // end if
 
-            pictureBox6.Location = new Point(Convert.ToInt32(rsx3), Convert.ToInt32(rsy3));
+            GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 += rsdx4;
-            if (rsx4 > panel1.Width - pictureBox7.Width)
+            GlobalVar.rsx4 += GlobalVar.rsdx4;
+            if (GlobalVar.rsx4 > panel1.Width - GlobalVar.pictureBox7.Width)
             {
-                rsx4 = 0;
+                GlobalVar.rsx4 = 0;
             } // end if
-            if (rsx4 < 0)
+            if (GlobalVar.rsx4 < 0)
             {
-                rsx4 = Convert.ToDouble(panel1.Width - pictureBox7.Width);
+                GlobalVar.rsx4 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox7.Width);
             } // end if
 
-            rsy4 += rsdy4;
-            if (rsy4 > panel1.Height - pictureBox7.Height)
+            GlobalVar.rsy4 += GlobalVar.rsdy4;
+            if (GlobalVar.rsy4 > panel1.Height - GlobalVar.pictureBox7.Height)
             {
-                rsy4 = 0;
+                GlobalVar.rsy4 = 0;
             } // end if 
-            if (rsy4 < 0)
+            if (GlobalVar.rsy4 < 0)
             {
-                rsy4 = Convert.ToDouble(panel1.Height - pictureBox7.Height);
+                GlobalVar.rsy4 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox7.Height);
             } // end if
 
-            pictureBox7.Location = new Point(Convert.ToInt32(rsx4), Convert.ToInt32(rsy4));
+            GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 += rsdx5;
-            if (rsx5 > panel1.Width - pictureBox8.Width)
+            GlobalVar.rsx5 += GlobalVar.rsdx5;
+            if (GlobalVar.rsx5 > panel1.Width - GlobalVar.pictureBox8.Width)
             {
-                rsx5 = 0;
+                GlobalVar.rsx5 = 0;
             } // end if
-            if (rsx5 < 0)
+            if (GlobalVar.rsx5 < 0)
             {
-                rsx5 = Convert.ToDouble(panel1.Width - pictureBox8.Width);
+                GlobalVar.rsx5 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox8.Width);
             } // end if
 
-            rsy5 += rsdy5;
-            if (rsy5 > panel1.Height - pictureBox8.Height)
+            GlobalVar.rsy5 += GlobalVar.rsdy5;
+            if (GlobalVar.rsy5 > panel1.Height - GlobalVar.pictureBox8.Height)
             {
-                rsy5 = 0;
+                GlobalVar.rsy5 = 0;
             } // end if 
-            if (rsy5 < 0)
+            if (GlobalVar.rsy5 < 0)
             {
-                rsy5 = Convert.ToDouble(panel1.Height - pictureBox8.Height);
+                GlobalVar.rsy5 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox8.Height);
             } // end if
 
-            pictureBox8.Location = new Point(Convert.ToInt32(rsx5), Convert.ToInt32(rsy5));
+            GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 += rsdx6;
-            if (rsx6 > panel1.Width - pictureBox9.Width)
+            GlobalVar.rsx6 += GlobalVar.rsdx6;
+            if (GlobalVar.rsx6 > panel1.Width - GlobalVar.pictureBox9.Width)
             {
-                rsx6 = 0;
+                GlobalVar.rsx6 = 0;
             } // end if
-            if (rsx6 < 0)
+            if (GlobalVar.rsx6 < 0)
             {
-                rsx6 = Convert.ToDouble(panel1.Width - pictureBox9.Width);
+                GlobalVar.rsx6 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox9.Width);
             } // end if
 
-            rsy6 += rsdy6;
-            if (rsy6 > panel1.Height - pictureBox9.Height)
+            GlobalVar.rsy6 += GlobalVar.rsdy6;
+            if (GlobalVar.rsy6 > panel1.Height - GlobalVar.pictureBox9.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy6 < 0)
+            if (GlobalVar.rsy6 < 0)
             {
-                rsy6 = Convert.ToDouble(panel1.Height - pictureBox9.Height);
+                GlobalVar.rsy6 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox9.Height);
             } // end if
 
-            pictureBox9.Location = new Point(Convert.ToInt32(rsx6), Convert.ToInt32(rsy6));
+            GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 += rsdx7;
-            if (rsx7 > panel1.Width - pictureBox10.Width)
+            GlobalVar.rsx7 += GlobalVar.rsdx7;
+            if (GlobalVar.rsx7 > panel1.Width - GlobalVar.pictureBox10.Width)
             {
-                rsx7 = 0;
+                GlobalVar.rsx7 = 0;
             } // end if
-            if (rsx7 < 0)
+            if (GlobalVar.rsx7 < 0)
             {
-                rsx7 = Convert.ToDouble(panel1.Width - pictureBox10.Width);
+                GlobalVar.rsx7 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox10.Width);
             } // end if
 
-            rsy7 += rsdy7;
-            if (rsy7 > panel1.Height - pictureBox10.Height)
+            GlobalVar.rsy7 += GlobalVar.rsdy7;
+            if (GlobalVar.rsy7 > panel1.Height - GlobalVar.pictureBox10.Height)
             {
-                rsy6 = 0;
+                GlobalVar.rsy6 = 0;
             } // end if 
-            if (rsy7 < 0)
+            if (GlobalVar.rsy7 < 0)
             {
-                rsy7 = Convert.ToDouble(panel1.Height - pictureBox10.Height);
+                GlobalVar.rsy7 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox10.Height);
             } // end if
 
-            pictureBox10.Location = new Point(Convert.ToInt32(rsx7), Convert.ToInt32(rsy7));
+            GlobalVar.pictureBox10.Location = new Point(Convert.ToInt32(GlobalVar.rsx7), Convert.ToInt32(GlobalVar.rsy7));
 
-            rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx8 += rsdx8;
-            if (rsx8 > panel1.Width - pictureBox11.Width)
+            GlobalVar.rsx8 += GlobalVar.rsdx8;
+            if (GlobalVar.rsx8 > panel1.Width - GlobalVar.pictureBox11.Width)
             {
-                rsx8 = 0;
+                GlobalVar.rsx8 = 0;
             } // end if
-            if (rsx8 < 0)
+            if (GlobalVar.rsx8 < 0)
             {
-                rsx8 = Convert.ToDouble(panel1.Width - pictureBox11.Width);
+                GlobalVar.rsx8 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox11.Width);
             } // end if
 
-            rsy8 += rsdy8;
-            if (rsy8 > panel1.Height - pictureBox11.Height)
+            GlobalVar.rsy8 += GlobalVar.rsdy8;
+            if (GlobalVar.rsy8 > panel1.Height - GlobalVar.pictureBox11.Height)
             {
-                rsy8 = 0;
+                GlobalVar.rsy8 = 0;
             } // end if 
-            if (rsy8 < 0)
+            if (GlobalVar.rsy8 < 0)
             {
-                rsy8 = Convert.ToDouble(panel1.Height - pictureBox11.Height);
+                GlobalVar.rsy8 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox11.Height);
             } // end if
 
-            pictureBox11.Location = new Point(Convert.ToInt32(rsx8), Convert.ToInt32(rsy8));
+            GlobalVar.pictureBox11.Location = new Point(Convert.ToInt32(GlobalVar.rsx8), Convert.ToInt32(GlobalVar.rsy8));
 
-            rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx9 += rsdx9;
-            if (rsx9 > panel1.Width - pictureBox12.Width)
+            GlobalVar.rsx9 += GlobalVar.rsdx9;
+            if (GlobalVar.rsx9 > panel1.Width - GlobalVar.pictureBox12.Width)
             {
-                rsx9 = 0;
+                GlobalVar.rsx9 = 0;
             } // end if
-            if (rsx9 < 0)
+            if (GlobalVar.rsx9 < 0)
             {
-                rsx9 = Convert.ToDouble(panel1.Width - pictureBox12.Width);
+                GlobalVar.rsx9 = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox12.Width);
             } // end if
 
-            rsy9 += rsdy9;
-            if (rsy9 > panel1.Height - pictureBox12.Height)
+            GlobalVar.rsy9 += GlobalVar.rsdy9;
+            if (GlobalVar.rsy9 > panel1.Height - GlobalVar.pictureBox12.Height)
             {
-                rsy9 = 0;
+                GlobalVar.rsy9 = 0;
             } // end if 
-            if (rsy9 < 0)
+            if (GlobalVar.rsy9 < 0)
             {
-                rsy9 = Convert.ToDouble(panel1.Height - pictureBox12.Height);
+                GlobalVar.rsy9 = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox12.Height);
             } // end if
 
-            pictureBox12.Location = new Point(Convert.ToInt32(rsx9), Convert.ToInt32(rsy9));
+            GlobalVar.pictureBox12.Location = new Point(Convert.ToInt32(GlobalVar.rsx9), Convert.ToInt32(GlobalVar.rsy9));
         }
         
         private void moveShip()
         {
-            x += dx;
-            if (x > panel1.Width - pictureBox1.Width)
+            GlobalVar.x += GlobalVar.dx;
+            //x += dx;
+            if (GlobalVar.x > panel1.Width - GlobalVar.pictureBox1.Width)
             {
-                x = 0;
+                GlobalVar.x = 0;
             } // end if
-            if (x < 0)
+            if (GlobalVar.x < 0)
             {
-                x = Convert.ToDouble(panel1.Width - pictureBox1.Width);
+                GlobalVar.x = Convert.ToDouble(panel1.Width - GlobalVar.pictureBox1.Width);
             } // end if
 
-            y += dy;
-            if (y > panel1.Height - pictureBox1.Height)
+            GlobalVar.y += GlobalVar.dy;
+            if (GlobalVar.y > panel1.Height - GlobalVar.pictureBox1.Height)
             {
-                y = 0;
+                GlobalVar.y = 0;
             } // end if 
-            if (y < 0)
+            if (GlobalVar.y < 0)
             {
-                y = Convert.ToDouble(panel1.Height - pictureBox1.Height);
+                GlobalVar.y = Convert.ToDouble(panel1.Height - GlobalVar.pictureBox1.Height);
             } // end if
 
-            pictureBox1.Location = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
+            GlobalVar.pictureBox1.Location = new Point(Convert.ToInt32(GlobalVar.x), Convert.ToInt32(GlobalVar.y));
         } // end moveShip
 
         private void checkCollideOne()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            //rSpectacle1 = pictureBox4.Bounds;
-            //rSpectacle2 = pictureBox5.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            //rSpectacle1 = GlobalVar.pictureBox4.Bounds;
+            //rSpectacle2 = GlobalVar.pictureBox5.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle))
             {
                 timer1.Enabled = false;
 
@@ -1872,12 +1874,12 @@ namespace LunarLander
 
         private void checkCollideTwo()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            //rSpectacle2 = pictureBox5.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            //rSpectacle2 = GlobalVar.pictureBox5.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1))
             {
                 timer1.Enabled = false;
 
@@ -1889,12 +1891,12 @@ namespace LunarLander
 
         private void checkCollideThree()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2))
             {
                 timer1.Enabled = false;
 
@@ -1906,13 +1908,13 @@ namespace LunarLander
 
         private void checkCollideFour()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3))
             {
                 timer1.Enabled = false;
 
@@ -1924,14 +1926,14 @@ namespace LunarLander
 
         private void checkCollideFive()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
-            rObstacle4 = pictureBox7.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
+            GlobalVar.rObstacle4 = GlobalVar.pictureBox7.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3) || rLander.IntersectsWith(rObstacle4))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle4))
             {
                 timer1.Enabled = false;
 
@@ -1943,15 +1945,15 @@ namespace LunarLander
 
         private void checkCollideSix()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
-            rObstacle4 = pictureBox7.Bounds;
-            rObstacle5 = pictureBox8.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
+            GlobalVar.rObstacle4 = GlobalVar.pictureBox7.Bounds;
+            GlobalVar.rObstacle5 = GlobalVar.pictureBox8.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3) || rLander.IntersectsWith(rObstacle4) || rLander.IntersectsWith(rObstacle5))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle4) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle5))
             {
                 timer1.Enabled = false;
 
@@ -1963,16 +1965,16 @@ namespace LunarLander
         
         private void checkCollideSeven()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
-            rObstacle4 = pictureBox7.Bounds;
-            rObstacle5 = pictureBox8.Bounds;
-            rObstacle6 = pictureBox9.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
+            GlobalVar.rObstacle4 = GlobalVar.pictureBox7.Bounds;
+            GlobalVar.rObstacle5 = GlobalVar.pictureBox8.Bounds;
+            GlobalVar.rObstacle6 = GlobalVar.pictureBox9.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3) || rLander.IntersectsWith(rObstacle4) || rLander.IntersectsWith(rObstacle5) || rLander.IntersectsWith(rObstacle6))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle4) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle5) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle6))
             {
                 timer1.Enabled = false;
 
@@ -1984,17 +1986,17 @@ namespace LunarLander
         
         private void checkCollideEight()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
-            rObstacle4 = pictureBox7.Bounds;
-            rObstacle5 = pictureBox8.Bounds;
-            rObstacle6 = pictureBox9.Bounds;
-            rObstacle7 = pictureBox10.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
+            GlobalVar.rObstacle4 = GlobalVar.pictureBox7.Bounds;
+            GlobalVar.rObstacle5 = GlobalVar.pictureBox8.Bounds;
+            GlobalVar.rObstacle6 = GlobalVar.pictureBox9.Bounds;
+            GlobalVar.rObstacle7 = GlobalVar.pictureBox10.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3) || rLander.IntersectsWith(rObstacle4) || rLander.IntersectsWith(rObstacle5) || rLander.IntersectsWith(rObstacle6) || rLander.IntersectsWith(rObstacle7))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle4) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle5) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle6) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle7))
             {
                 timer1.Enabled = false;
 
@@ -2006,18 +2008,18 @@ namespace LunarLander
 
         private void checkCollideNine()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
-            rObstacle4 = pictureBox7.Bounds;
-            rObstacle5 = pictureBox8.Bounds;
-            rObstacle6 = pictureBox9.Bounds;
-            rObstacle7 = pictureBox10.Bounds;
-            rObstacle8 = pictureBox11.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
+            GlobalVar.rObstacle4 = GlobalVar.pictureBox7.Bounds;
+            GlobalVar.rObstacle5 = GlobalVar.pictureBox8.Bounds;
+            GlobalVar.rObstacle6 = GlobalVar.pictureBox9.Bounds;
+            GlobalVar.rObstacle7 = GlobalVar.pictureBox10.Bounds;
+            GlobalVar.rObstacle8 = GlobalVar.pictureBox11.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3) || rLander.IntersectsWith(rObstacle4) || rLander.IntersectsWith(rObstacle5) || rLander.IntersectsWith(rObstacle6) || rLander.IntersectsWith(rObstacle7) || rLander.IntersectsWith(rObstacle8))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle4) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle5) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle6) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle7) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle8))
             {
                 timer1.Enabled = false;
 
@@ -2029,19 +2031,19 @@ namespace LunarLander
 
         private void checkCollideTen()
         {
-            rLander = pictureBox1.Bounds;
-            rObstacle = pictureBox3.Bounds;
-            rObstacle1 = pictureBox4.Bounds;
-            rObstacle2 = pictureBox5.Bounds;
-            rObstacle3 = pictureBox6.Bounds;
-            rObstacle4 = pictureBox7.Bounds;
-            rObstacle5 = pictureBox8.Bounds;
-            rObstacle6 = pictureBox9.Bounds;
-            rObstacle7 = pictureBox10.Bounds;
-            rObstacle8 = pictureBox11.Bounds;
-            rObstacle9 = pictureBox12.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rObstacle = GlobalVar.pictureBox3.Bounds;
+            GlobalVar.rObstacle1 = GlobalVar.pictureBox4.Bounds;
+            GlobalVar.rObstacle2 = GlobalVar.pictureBox5.Bounds;
+            GlobalVar.rObstacle3 = GlobalVar.pictureBox6.Bounds;
+            GlobalVar.rObstacle4 = GlobalVar.pictureBox7.Bounds;
+            GlobalVar.rObstacle5 = GlobalVar.pictureBox8.Bounds;
+            GlobalVar.rObstacle6 = GlobalVar.pictureBox9.Bounds;
+            GlobalVar.rObstacle7 = GlobalVar.pictureBox10.Bounds;
+            GlobalVar.rObstacle8 = GlobalVar.pictureBox11.Bounds;
+            GlobalVar.rObstacle9 = GlobalVar.pictureBox12.Bounds;
 
-            if (rLander.IntersectsWith(rObstacle) || rLander.IntersectsWith(rObstacle1) || rLander.IntersectsWith(rObstacle2) || rLander.IntersectsWith(rObstacle3) || rLander.IntersectsWith(rObstacle4) || rLander.IntersectsWith(rObstacle5) || rLander.IntersectsWith(rObstacle6) || rLander.IntersectsWith(rObstacle7) || rLander.IntersectsWith(rObstacle8) || rLander.IntersectsWith(rObstacle9))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle1) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle2) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle3) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle4) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle5) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle6) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle7) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle8) || GlobalVar.rLander.IntersectsWith(GlobalVar.rObstacle9))
             {
                 timer1.Enabled = false;
 
@@ -2053,24 +2055,24 @@ namespace LunarLander
 
         private void checkLanding()
         {
-            rLander = pictureBox1.Bounds;
-            rPlatform = pictureBox2.Bounds;
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            GlobalVar.rPlatform = GlobalVar.pictureBox2.Bounds;
 
-            if (rLander.IntersectsWith(rPlatform))
+            if (GlobalVar.rLander.IntersectsWith(GlobalVar.rPlatform))
             {
                 timer1.Enabled = false;
 
-                if (Math.Abs(dx) < 1)
+                if (Math.Abs(GlobalVar.dx) < 1)
                 {
-                    if (Math.Abs(dy) < 3)
+                    if (Math.Abs(GlobalVar.dy) < 3)
                     {
-                        if (Math.Abs(rLander.Bottom - rPlatform.Top) < 3)
-                        {
-                            MessageBox.Show("Good Landing!");
-                            fuel += 30;
-                            score += 10000;
-                            level += 1;
-                        }
+                        //if (Math.Abs(GlobalVar.rLander.Bottom - GlobalVar.rPlatform.Top) < 3)
+                        //{
+                        MessageBox.Show("Good Landing!");
+                        GlobalVar.fuel += 30;
+                        GlobalVar.score += 10000;
+                        GlobalVar.level += 1;
+                        //}
                     }
                     else
                     {
@@ -2089,13 +2091,13 @@ namespace LunarLander
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            fuel--;
+            GlobalVar.fuel--;
 
-            if (fuel < 0)
+            if (GlobalVar.fuel < 0)
             {
                 timer1.Enabled = false;
                 MessageBox.Show("Out of Fuel!!");
-                fuel += 20;
+                GlobalVar.fuel += 20;
                 killShip();
                 initGame();
             } // end if
@@ -2103,16 +2105,16 @@ namespace LunarLander
             switch (e.KeyData)
             {
                 case Keys.Up:
-                    pictureBox1.BackgroundImage = imageList1.Images[0];
-                    dy -= 2;
+                    GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
+                    GlobalVar.dy -= 2;
                     break;
                 case Keys.Left:
-                    pictureBox1.BackgroundImage = imageList1.Images[0];
-                    dx++;
+                    GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
+                    GlobalVar.dx++;
                     break;
                 case Keys.Right:
-                    pictureBox1.BackgroundImage = imageList1.Images[0];
-                    dx--;
+                    GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
+                    GlobalVar.dx--;
                     break;
                 default:
                     break;
@@ -2121,37 +2123,37 @@ namespace LunarLander
 
         public void showStats()
         {
-            label1.Text = "dx: " + dx;
-            label2.Text = "dy: " + dy;
-            label3.Text = "Fuel: " + fuel;
-            label4.Text = "Ships: " + ships;
-            label5.Text = "Score: " + score;
-            label9.Text = "Level: " + level;
-            label6.Text = "Spetacles1 Location: " + pictureBox3.Location.X + ", " + pictureBox3.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx + " Displacement y: " + rsdy + Environment.NewLine
-                + "Spetacles2 Location: " + pictureBox4.Location.X + ", " + pictureBox4.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx1 + " Displacement y: " + rsdy1 + Environment.NewLine
-                + "Spetacles3 Location: " + pictureBox5.Location.X + ", " + pictureBox5.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx2 + " Displacement y: " + rsdy2 + Environment.NewLine
-                + "Spetacles4 Location: " + pictureBox6.Location.X + ", " + pictureBox6.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx3 + " Displacement y: " + rsdy3 + Environment.NewLine
-                + "Spetacles5 Location: " + pictureBox7.Location.X + ", " + pictureBox7.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx4 + " Displacement y: " + rsdy4 + Environment.NewLine
-                + "Spetacles6 Location: " + pictureBox8.Location.X + ", " + pictureBox8.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx5 + " Displacement y: " + rsdy5 + Environment.NewLine
-                + "Spetacles7 Location: " + pictureBox9.Location.X + ", " + pictureBox9.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx6 + " Displacement y: " + rsdy6 + Environment.NewLine
-                + "Spetacles8 Location: " + pictureBox10.Location.X + ", " + pictureBox10.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx7 + " Displacement y: " + rsdy7 + Environment.NewLine
-                + "Spetacles9 Location: " + pictureBox11.Location.X + ", " + pictureBox11.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx8 + " Displacement y: " + rsdy8 + Environment.NewLine
-                + "Spetacles10 Location: " + pictureBox12.Location.X + ", " + pictureBox12.Location.Y + Environment.NewLine
-                + "Displacement x: " + rsdx9 + " Displacement y: " + rsdy9;
-            label7.Text = "Platform location: " + pictureBox2.Location.X + ", " + pictureBox2.Location.Y;
-            label8.Text = "Ship location: " + pictureBox1.Location.X + ", " + pictureBox1.Location.Y;
-            //label6.Text = "Picturebox 1 Bound: " + pictureBox1.Bounds;
-            //label7.Text = "Picturebox 2 Bound: " + pictureBox2.Bounds;
-            //if (rLander.IntersectsWith(rPlatform))
+            label1.Text = "dx: " + GlobalVar.dx;
+            label2.Text = "dy: " + GlobalVar.dy;
+            label3.Text = "Fuel: " + GlobalVar.fuel;
+            label4.Text = "Ships: " + GlobalVar.ships;
+            label5.Text = "Score: " + GlobalVar.score;
+            label9.Text = "Level: " + GlobalVar.level;
+            label6.Text = "Spetacles1 Location: " + GlobalVar.pictureBox3.Location.X + ", " + GlobalVar.pictureBox3.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx + " Displacement y: " + GlobalVar.rsdy + Environment.NewLine
+                + "Spetacles2 Location: " + GlobalVar.pictureBox4.Location.X + ", " + GlobalVar.pictureBox4.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx1 + " Displacement y: " + GlobalVar.rsdy1 + Environment.NewLine
+                + "Spetacles3 Location: " + GlobalVar.pictureBox5.Location.X + ", " + GlobalVar.pictureBox5.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx2 + " Displacement y: " + GlobalVar.rsdy2 + Environment.NewLine
+                + "Spetacles4 Location: " + GlobalVar.pictureBox6.Location.X + ", " + GlobalVar.pictureBox6.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx3 + " Displacement y: " + GlobalVar.rsdy3 + Environment.NewLine
+                + "Spetacles5 Location: " + GlobalVar.pictureBox7.Location.X + ", " + GlobalVar.pictureBox7.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx4 + " Displacement y: " + GlobalVar.rsdy4 + Environment.NewLine
+                + "Spetacles6 Location: " + GlobalVar.pictureBox8.Location.X + ", " + GlobalVar.pictureBox8.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx5 + " Displacement y: " + GlobalVar.rsdy5 + Environment.NewLine
+                + "Spetacles7 Location: " + GlobalVar.pictureBox9.Location.X + ", " + GlobalVar.pictureBox9.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx6 + " Displacement y: " + GlobalVar.rsdy6 + Environment.NewLine
+                + "Spetacles8 Location: " + GlobalVar.pictureBox10.Location.X + ", " + GlobalVar.pictureBox10.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx7 + " Displacement y: " + GlobalVar.rsdy7 + Environment.NewLine
+                + "Spetacles9 Location: " + GlobalVar.pictureBox11.Location.X + ", " + GlobalVar.pictureBox11.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx8 + " Displacement y: " + GlobalVar.rsdy8 + Environment.NewLine
+                + "Spetacles10 Location: " + GlobalVar.pictureBox12.Location.X + ", " + GlobalVar.pictureBox12.Location.Y + Environment.NewLine
+                + "Displacement x: " + GlobalVar.rsdx9 + " Displacement y: " + GlobalVar.rsdy9;
+            label7.Text = "Platform location: " + GlobalVar.pictureBox2.Location.X + ", " + GlobalVar.pictureBox2.Location.Y;
+            label8.Text = "Ship location: " + GlobalVar.pictureBox1.Location.X + ", " + GlobalVar.pictureBox1.Location.Y;
+            //label6.Text = "Picturebox 1 Bound: " + GlobalVar.pictureBox1.Bounds;
+            //label7.Text = "Picturebox 2 Bound: " + GlobalVar.pictureBox2.Bounds;
+            //if (GlobalVar.rLander.IntersectsWith(GlobalVar.rPlatform))
             //{
             //    label8.Text = "Ship is landed.";
             //}
@@ -2160,15 +2162,15 @@ namespace LunarLander
         public void killShip()
         {
             DialogResult answer;
-            ships--;
+            GlobalVar.ships--;
 
-            if (ships <= 0)
+            if (GlobalVar.ships <= 0)
             {
                 answer = MessageBox.Show("Play Again?", "Game Over", MessageBoxButtons.YesNo);
                 if (answer == DialogResult.Yes)
                 {
-                    ships = 3;
-                    fuel = 100;
+                    GlobalVar.ships = 3;
+                    GlobalVar.fuel = 100;
                     initGame();
                 }
                 else
@@ -2180,10 +2182,11 @@ namespace LunarLander
 
         public void initGame()
         {
+            DialogResult answer;
             initLunarRover();
             initPLatform();
 
-            switch (level)
+            switch (GlobalVar.level)
             {
                 case 1:
                     initLvlOne();
@@ -2313,8 +2316,16 @@ namespace LunarLander
                     initObstacle10();
                     break;
                 case 15:
-                    MessageBox.Show("You have complete all the level. Application will now close");
-                    Application.Exit();
+                    answer = MessageBox.Show("You have complete all the level. Do you want to play again?", "Game Over", MessageBoxButtons.YesNo);
+                    if (answer == DialogResult.Yes)
+                    {
+                        GlobalVar.level = 1;
+                        initGame();
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    } // end if
                     break;
                 default:
                     MessageBox.Show("Something have gone wrong. The application will close now.");
@@ -2326,156 +2337,156 @@ namespace LunarLander
 
         public void initLunarRover()
         {
-            pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            pictureBox1.Location = new System.Drawing.Point(206, 50);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(20, 22);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            this.panel1.Controls.Add(pictureBox1);
+            GlobalVar.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            GlobalVar.pictureBox1.Location = new System.Drawing.Point(206, 50);
+            GlobalVar.pictureBox1.Name = "GlobalVar.pictureBox1";
+            GlobalVar.pictureBox1.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox1.TabIndex = 0;
+            GlobalVar.pictureBox1.TabStop = false;
+            this.panel1.Controls.Add(GlobalVar.pictureBox1);
         }
 
         public void initPLatform()
         {
-            pictureBox2.Location = new System.Drawing.Point(206, 103);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(52, 10);
-            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
-            pictureBox2.BackgroundImage = imageList1.Images[1];
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox2);
+            GlobalVar.pictureBox2.Location = new System.Drawing.Point(206, 103);
+            GlobalVar.pictureBox2.Name = "GlobalVar.pictureBox2";
+            GlobalVar.pictureBox2.Size = new System.Drawing.Size(52, 10);
+            GlobalVar.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox2.TabIndex = 1;
+            GlobalVar.pictureBox2.TabStop = false;
+            GlobalVar.pictureBox2.BackgroundImage = imageList1.Images[1];
+            GlobalVar.pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox2);
         }
 
         public void initObstacle1()
         {
-            pictureBox3.Location = new System.Drawing.Point(370, 50);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new System.Drawing.Size(20, 22);
-            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 10;
-            pictureBox3.TabStop = false;
-            pictureBox3.BackgroundImage = imageList1.Images[2];
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox3);
+            GlobalVar.pictureBox3.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox3.Name = "GlobalVar.pictureBox3";
+            GlobalVar.pictureBox3.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox3.TabIndex = 10;
+            GlobalVar.pictureBox3.TabStop = false;
+            GlobalVar.pictureBox3.BackgroundImage = imageList1.Images[2];
+            GlobalVar.pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox3);
         }
 
         public void initObstacle2()
         {
-            pictureBox4.Location = new System.Drawing.Point(370, 50);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new System.Drawing.Size(20, 22);
-            pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 10;
-            pictureBox4.TabStop = false;
-            pictureBox4.BackgroundImage = imageList1.Images[3];
-            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox4);
+            GlobalVar.pictureBox4.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox4.Name = "GlobalVar.pictureBox4";
+            GlobalVar.pictureBox4.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox4.TabIndex = 10;
+            GlobalVar.pictureBox4.TabStop = false;
+            GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox4);
         }
 
         public void initObstacle3()
         {
-            pictureBox5.Location = new System.Drawing.Point(370, 50);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new System.Drawing.Size(20, 22);
-            pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 10;
-            pictureBox5.TabStop = false;
-            pictureBox5.BackgroundImage = imageList1.Images[4];
-            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox5);
+            GlobalVar.pictureBox5.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox5.Name = "GlobalVar.pictureBox5";
+            GlobalVar.pictureBox5.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox5.TabIndex = 10;
+            GlobalVar.pictureBox5.TabStop = false;
+            GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox5);
         }
 
         public void initObstacle4()
         {
-            pictureBox6.Location = new System.Drawing.Point(370, 50);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new System.Drawing.Size(20, 22);
-            pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox6.TabIndex = 10;
-            pictureBox6.TabStop = false;
-            pictureBox6.BackgroundImage = imageList1.Images[5];
-            pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox6);
+            GlobalVar.pictureBox6.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox6.Name = "GlobalVar.pictureBox6";
+            GlobalVar.pictureBox6.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox6.TabIndex = 10;
+            GlobalVar.pictureBox6.TabStop = false;
+            GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox6);
         }
 
         public void initObstacle5()
         {
-            pictureBox7.Location = new System.Drawing.Point(370, 50);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new System.Drawing.Size(20, 22);
-            pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox7.TabIndex = 10;
-            pictureBox7.TabStop = false;
-            pictureBox7.BackgroundImage = imageList1.Images[6];
-            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox7);
+            GlobalVar.pictureBox7.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox7.Name = "GlobalVar.pictureBox7";
+            GlobalVar.pictureBox7.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox7.TabIndex = 10;
+            GlobalVar.pictureBox7.TabStop = false;
+            GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox7);
         }
 
         public void initObstacle6()
         {
-            pictureBox8.Location = new System.Drawing.Point(370, 50);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new System.Drawing.Size(20, 22);
-            pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox8.TabIndex = 10;
-            pictureBox8.TabStop = false;
-            pictureBox8.BackgroundImage = imageList1.Images[7];
-            pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox8);
+            GlobalVar.pictureBox8.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox8.Name = "GlobalVar.pictureBox8";
+            GlobalVar.pictureBox8.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox8.TabIndex = 10;
+            GlobalVar.pictureBox8.TabStop = false;
+            GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox8);
         }
 
         public void initObstacle7()
         {
-            pictureBox9.Location = new System.Drawing.Point(370, 50);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new System.Drawing.Size(20, 22);
-            pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox9.TabIndex = 10;
-            pictureBox9.TabStop = false;
-            pictureBox9.BackgroundImage = imageList1.Images[8];
-            pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox9);
+            GlobalVar.pictureBox9.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox9.Name = "GlobalVar.pictureBox9";
+            GlobalVar.pictureBox9.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox9.TabIndex = 10;
+            GlobalVar.pictureBox9.TabStop = false;
+            GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox9);
         }
 
         public void initObstacle8()
         {
-            pictureBox10.Location = new System.Drawing.Point(370, 50);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new System.Drawing.Size(20, 22);
-            pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox10.TabIndex = 10;
-            pictureBox10.TabStop = false;
-            pictureBox10.BackgroundImage = imageList1.Images[9];
-            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox10);
+            GlobalVar.pictureBox10.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox10.Name = "GlobalVar.pictureBox10";
+            GlobalVar.pictureBox10.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox10.TabIndex = 10;
+            GlobalVar.pictureBox10.TabStop = false;
+            GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[9];
+            GlobalVar.pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox10);
         }
 
         public void initObstacle9()
         {
-            pictureBox11.Location = new System.Drawing.Point(370, 50);
-            pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new System.Drawing.Size(20, 22);
-            pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox11.TabIndex = 10;
-            pictureBox11.TabStop = false;
-            pictureBox11.BackgroundImage = imageList1.Images[10];
-            pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox11);
+            GlobalVar.pictureBox11.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox11.Name = "GlobalVar.pictureBox11";
+            GlobalVar.pictureBox11.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox11.TabIndex = 10;
+            GlobalVar.pictureBox11.TabStop = false;
+            GlobalVar.pictureBox11.BackgroundImage = imageList1.Images[10];
+            GlobalVar.pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox11);
         }
 
         public void initObstacle10()
         {
-            pictureBox12.Location = new System.Drawing.Point(370, 50);
-            pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new System.Drawing.Size(20, 22);
-            pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox12.TabIndex = 10;
-            pictureBox12.TabStop = false;
-            pictureBox12.BackgroundImage = imageList1.Images[11];
-            pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            this.panel1.Controls.Add(pictureBox12);
+            GlobalVar.pictureBox12.Location = new System.Drawing.Point(370, 50);
+            GlobalVar.pictureBox12.Name = "GlobalVar.pictureBox12";
+            GlobalVar.pictureBox12.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.pictureBox12.TabIndex = 10;
+            GlobalVar.pictureBox12.TabStop = false;
+            GlobalVar.pictureBox12.BackgroundImage = imageList1.Images[11];
+            GlobalVar.pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.pictureBox12);
         }
         
         public void initLvlOne()
@@ -2483,26 +2494,26 @@ namespace LunarLander
             Random roller = new Random();
             int platX, platY; // platform location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            pictureBox3.Visible = false;
-            pictureBox4.Visible = false;
-            pictureBox5.Visible = false;
-            pictureBox6.Visible = false;
-            pictureBox7.Visible = false;
-            pictureBox8.Visible = false;
-            pictureBox9.Visible = false;
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox3.Visible = false;
+            GlobalVar.pictureBox4.Visible = false;
+            GlobalVar.pictureBox5.Visible = false;
+            GlobalVar.pictureBox6.Visible = false;
+            GlobalVar.pictureBox7.Visible = false;
+            GlobalVar.pictureBox8.Visible = false;
+            GlobalVar.pictureBox9.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlTwo()
@@ -2511,34 +2522,34 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
-            pictureBox4.Visible = false;
-            pictureBox5.Visible = false;
-            pictureBox6.Visible = false;
-            pictureBox7.Visible = false;
-            pictureBox8.Visible = false;
-            pictureBox9.Visible = false;
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
+            GlobalVar.pictureBox4.Visible = false;
+            GlobalVar.pictureBox5.Visible = false;
+            GlobalVar.pictureBox6.Visible = false;
+            GlobalVar.pictureBox7.Visible = false;
+            GlobalVar.pictureBox8.Visible = false;
+            GlobalVar.pictureBox9.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlThree()
@@ -2547,38 +2558,38 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
-            pictureBox5.Visible = false;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
+            GlobalVar.pictureBox5.Visible = false;
         }
 
         public void initLvlFour()
@@ -2587,56 +2598,56 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
-            pictureBox6.Visible = false;
-            pictureBox7.Visible = false;
-            pictureBox8.Visible = false;
-            pictureBox9.Visible = false;
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
+            GlobalVar.pictureBox6.Visible = false;
+            GlobalVar.pictureBox7.Visible = false;
+            GlobalVar.pictureBox8.Visible = false;
+            GlobalVar.pictureBox9.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlFive()
@@ -2645,68 +2656,68 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            pictureBox7.Visible = false;
-            pictureBox8.Visible = false;
-            pictureBox9.Visible = false;
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox7.Visible = false;
+            GlobalVar.pictureBox8.Visible = false;
+            GlobalVar.pictureBox9.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlSix()
@@ -2715,79 +2726,79 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            pictureBox8.Visible = false;
-            pictureBox9.Visible = false;
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox8.Visible = false;
+            GlobalVar.pictureBox9.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlSeven()
@@ -2796,90 +2807,90 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4, speX5, speY5; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox8.Width));
-            rsy5 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox8.Height));
-            speX5 = roller.Next(panel1.Width - pictureBox8.Width);
-            speY5 = roller.Next(panel1.Height - pictureBox8.Height);
-            pictureBox8.Location = new Point(speX5, speY5);
-            //pictureBox8.BackgroundImage = imageList1.Images[7];
-            //pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Visible = true;
+            GlobalVar.rsx5 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox8.Width));
+            GlobalVar.rsy5 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox8.Height));
+            speX5 = roller.Next(panel1.Width - GlobalVar.pictureBox8.Width);
+            speY5 = roller.Next(panel1.Height - GlobalVar.pictureBox8.Height);
+            GlobalVar.pictureBox8.Location = new Point(speX5, speY5);
+            //GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            //GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox8.Visible = true;
 
-            pictureBox9.Visible = false;
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox9.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlEight()
@@ -2888,101 +2899,101 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4, speX5, speY5, speX6, speY6; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox8.Width));
-            rsy5 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox8.Height));
-            speX5 = roller.Next(panel1.Width - pictureBox8.Width);
-            speY5 = roller.Next(panel1.Height - pictureBox8.Height);
-            pictureBox8.Location = new Point(speX5, speY5);
-            //pictureBox8.BackgroundImage = imageList1.Images[7];
-            //pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Visible = true;
+            GlobalVar.rsx5 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox8.Width));
+            GlobalVar.rsy5 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox8.Height));
+            speX5 = roller.Next(panel1.Width - GlobalVar.pictureBox8.Width);
+            speY5 = roller.Next(panel1.Height - GlobalVar.pictureBox8.Height);
+            GlobalVar.pictureBox8.Location = new Point(speX5, speY5);
+            //GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            //GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox8.Visible = true;
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox9.Width));
-            rsy6 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox9.Height));
-            speX6 = roller.Next(panel1.Width - pictureBox9.Width);
-            speY6 = roller.Next(panel1.Height - pictureBox9.Height);
-            pictureBox9.Location = new Point(speX6, speY6);
-            //pictureBox9.BackgroundImage = imageList1.Images[8];
-            //pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Visible = true;
+            GlobalVar.rsx6 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox9.Width));
+            GlobalVar.rsy6 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox9.Height));
+            speX6 = roller.Next(panel1.Width - GlobalVar.pictureBox9.Width);
+            speY6 = roller.Next(panel1.Height - GlobalVar.pictureBox9.Height);
+            GlobalVar.pictureBox9.Location = new Point(speX6, speY6);
+            //GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            //GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox9.Visible = true;
 
-            pictureBox10.Visible = false;
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox10.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlNine()
@@ -2991,112 +3002,112 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4, speX5, speY5, speX6, speY6, speX7, speY7; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox8.Width));
-            rsy5 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox8.Height));
-            speX5 = roller.Next(panel1.Width - pictureBox8.Width);
-            speY5 = roller.Next(panel1.Height - pictureBox8.Height);
-            pictureBox8.Location = new Point(speX5, speY5);
-            //pictureBox8.BackgroundImage = imageList1.Images[7];
-            //pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Visible = true;
+            GlobalVar.rsx5 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox8.Width));
+            GlobalVar.rsy5 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox8.Height));
+            speX5 = roller.Next(panel1.Width - GlobalVar.pictureBox8.Width);
+            speY5 = roller.Next(panel1.Height - GlobalVar.pictureBox8.Height);
+            GlobalVar.pictureBox8.Location = new Point(speX5, speY5);
+            //GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            //GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox8.Visible = true;
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox9.Width));
-            rsy6 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox9.Height));
-            speX6 = roller.Next(panel1.Width - pictureBox9.Width);
-            speY6 = roller.Next(panel1.Height - pictureBox9.Height);
-            pictureBox9.Location = new Point(speX6, speY6);
-            //pictureBox9.BackgroundImage = imageList1.Images[8];
-            //pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Visible = true;
+            GlobalVar.rsx6 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox9.Width));
+            GlobalVar.rsy6 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox9.Height));
+            speX6 = roller.Next(panel1.Width - GlobalVar.pictureBox9.Width);
+            speY6 = roller.Next(panel1.Height - GlobalVar.pictureBox9.Height);
+            GlobalVar.pictureBox9.Location = new Point(speX6, speY6);
+            //GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            //GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox9.Visible = true;
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox10.Width));
-            rsy7 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox10.Height));
-            speX7 = roller.Next(panel1.Width - pictureBox10.Width);
-            speY7 = roller.Next(panel1.Height - pictureBox10.Height);
-            pictureBox10.Location = new Point(speX7, speY7);
-            //pictureBox10.BackgroundImage = imageList1.Images[9];
-            //pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Visible = true;
+            GlobalVar.rsx7 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox10.Width));
+            GlobalVar.rsy7 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox10.Height));
+            speX7 = roller.Next(panel1.Width - GlobalVar.pictureBox10.Width);
+            speY7 = roller.Next(panel1.Height - GlobalVar.pictureBox10.Height);
+            GlobalVar.pictureBox10.Location = new Point(speX7, speY7);
+            //GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[9];
+            //GlobalVar.pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox10.Visible = true;
 
-            pictureBox11.Visible = false;
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox11.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlTen()
@@ -3105,123 +3116,123 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4, speX5, speY5, speX6, speY6, speX7, speY7, speX8, speY8; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox8.Width));
-            rsy5 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox8.Height));
-            speX5 = roller.Next(panel1.Width - pictureBox8.Width);
-            speY5 = roller.Next(panel1.Height - pictureBox8.Height);
-            pictureBox8.Location = new Point(speX5, speY5);
-            //pictureBox8.BackgroundImage = imageList1.Images[7];
-            //pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Visible = true;
+            GlobalVar.rsx5 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox8.Width));
+            GlobalVar.rsy5 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox8.Height));
+            speX5 = roller.Next(panel1.Width - GlobalVar.pictureBox8.Width);
+            speY5 = roller.Next(panel1.Height - GlobalVar.pictureBox8.Height);
+            GlobalVar.pictureBox8.Location = new Point(speX5, speY5);
+            //GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            //GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox8.Visible = true;
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox9.Width));
-            rsy6 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox9.Height));
-            speX6 = roller.Next(panel1.Width - pictureBox9.Width);
-            speY6 = roller.Next(panel1.Height - pictureBox9.Height);
-            pictureBox9.Location = new Point(speX6, speY6);
-            //pictureBox9.BackgroundImage = imageList1.Images[8];
-            //pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Visible = true;
+            GlobalVar.rsx6 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox9.Width));
+            GlobalVar.rsy6 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox9.Height));
+            speX6 = roller.Next(panel1.Width - GlobalVar.pictureBox9.Width);
+            speY6 = roller.Next(panel1.Height - GlobalVar.pictureBox9.Height);
+            GlobalVar.pictureBox9.Location = new Point(speX6, speY6);
+            //GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            //GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox9.Visible = true;
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox10.Width));
-            rsy7 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox10.Height));
-            speX7 = roller.Next(panel1.Width - pictureBox10.Width);
-            speY7 = roller.Next(panel1.Height - pictureBox10.Height);
-            pictureBox10.Location = new Point(speX7, speY7);
-            //pictureBox10.BackgroundImage = imageList1.Images[9];
-            //pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Visible = true;
+            GlobalVar.rsx7 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox10.Width));
+            GlobalVar.rsy7 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox10.Height));
+            speX7 = roller.Next(panel1.Width - GlobalVar.pictureBox10.Width);
+            speY7 = roller.Next(panel1.Height - GlobalVar.pictureBox10.Height);
+            GlobalVar.pictureBox10.Location = new Point(speX7, speY7);
+            //GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[9];
+            //GlobalVar.pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox10.Visible = true;
 
-            rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx8 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox11.Width));
-            rsy8 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox11.Height));
-            speX8 = roller.Next(panel1.Width - pictureBox11.Width);
-            speY8 = roller.Next(panel1.Height - pictureBox11.Height);
-            pictureBox11.Location = new Point(speX8, speY8);
-            //pictureBox11.BackgroundImage = imageList1.Images[10];
-            //pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Visible = true;
+            GlobalVar.rsx8 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox11.Width));
+            GlobalVar.rsy8 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox11.Height));
+            speX8 = roller.Next(panel1.Width - GlobalVar.pictureBox11.Width);
+            speY8 = roller.Next(panel1.Height - GlobalVar.pictureBox11.Height);
+            GlobalVar.pictureBox11.Location = new Point(speX8, speY8);
+            //GlobalVar.pictureBox11.BackgroundImage = imageList1.Images[10];
+            //GlobalVar.pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox11.Visible = true;
 
-            pictureBox12.Visible = false;
+            GlobalVar.pictureBox12.Visible = false;
         }
 
         public void initLvlEleven()
@@ -3230,133 +3241,133 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4, speX5, speY5, speX6, speY6, speX7, speY7, speX8, speY8, speX9, speY9; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox8.Width));
-            rsy5 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox8.Height));
-            speX5 = roller.Next(panel1.Width - pictureBox8.Width);
-            speY5 = roller.Next(panel1.Height - pictureBox8.Height);
-            pictureBox8.Location = new Point(speX5, speY5);
-            //pictureBox8.BackgroundImage = imageList1.Images[7];
-            //pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Visible = true;
+            GlobalVar.rsx5 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox8.Width));
+            GlobalVar.rsy5 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox8.Height));
+            speX5 = roller.Next(panel1.Width - GlobalVar.pictureBox8.Width);
+            speY5 = roller.Next(panel1.Height - GlobalVar.pictureBox8.Height);
+            GlobalVar.pictureBox8.Location = new Point(speX5, speY5);
+            //GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            //GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox8.Visible = true;
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox9.Width));
-            rsy6 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox9.Height));
-            speX6 = roller.Next(panel1.Width - pictureBox9.Width);
-            speY6 = roller.Next(panel1.Height - pictureBox9.Height);
-            pictureBox9.Location = new Point(speX6, speY6);
-            //pictureBox9.BackgroundImage = imageList1.Images[8];
-            //pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Visible = true;
+            GlobalVar.rsx6 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox9.Width));
+            GlobalVar.rsy6 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox9.Height));
+            speX6 = roller.Next(panel1.Width - GlobalVar.pictureBox9.Width);
+            speY6 = roller.Next(panel1.Height - GlobalVar.pictureBox9.Height);
+            GlobalVar.pictureBox9.Location = new Point(speX6, speY6);
+            //GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            //GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox9.Visible = true;
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox10.Width));
-            rsy7 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox10.Height));
-            speX7 = roller.Next(panel1.Width - pictureBox10.Width);
-            speY7 = roller.Next(panel1.Height - pictureBox10.Height);
-            pictureBox10.Location = new Point(speX7, speY7);
-            //pictureBox10.BackgroundImage = imageList1.Images[9];
-            //pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Visible = true;
+            GlobalVar.rsx7 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox10.Width));
+            GlobalVar.rsy7 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox10.Height));
+            speX7 = roller.Next(panel1.Width - GlobalVar.pictureBox10.Width);
+            speY7 = roller.Next(panel1.Height - GlobalVar.pictureBox10.Height);
+            GlobalVar.pictureBox10.Location = new Point(speX7, speY7);
+            //GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[9];
+            //GlobalVar.pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox10.Visible = true;
 
-            rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx8 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox11.Width));
-            rsy8 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox11.Height));
-            speX8 = roller.Next(panel1.Width - pictureBox11.Width);
-            speY8 = roller.Next(panel1.Height - pictureBox11.Height);
-            pictureBox11.Location = new Point(speX8, speY8);
-            //pictureBox11.BackgroundImage = imageList1.Images[10];
-            //pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Visible = true;
+            GlobalVar.rsx8 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox11.Width));
+            GlobalVar.rsy8 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox11.Height));
+            speX8 = roller.Next(panel1.Width - GlobalVar.pictureBox11.Width);
+            speY8 = roller.Next(panel1.Height - GlobalVar.pictureBox11.Height);
+            GlobalVar.pictureBox11.Location = new Point(speX8, speY8);
+            //GlobalVar.pictureBox11.BackgroundImage = imageList1.Images[10];
+            //GlobalVar.pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox11.Visible = true;
 
-            rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx9 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox12.Width));
-            rsy9 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox12.Height));
-            speX9 = roller.Next(panel1.Width - pictureBox12.Width);
-            speY9 = roller.Next(panel1.Height - pictureBox12.Height);
-            pictureBox12.Location = new Point(speX9, speY9);
-            //pictureBox12.BackgroundImage = imageList1.Images[11];
-            //pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Visible = true;
+            GlobalVar.rsx9 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox12.Width));
+            GlobalVar.rsy9 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox12.Height));
+            speX9 = roller.Next(panel1.Width - GlobalVar.pictureBox12.Width);
+            speY9 = roller.Next(panel1.Height - GlobalVar.pictureBox12.Height);
+            GlobalVar.pictureBox12.Location = new Point(speX9, speY9);
+            //GlobalVar.pictureBox12.BackgroundImage = imageList1.Images[11];
+            //GlobalVar.pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox12.Visible = true;
         }
 
         public void initLvlTwelve()
@@ -3365,193 +3376,135 @@ namespace LunarLander
             int platX, platY; // platform location points.
             int speX, speY, speX1, speY1, speX2, speY2, speX3, speY3, speX4, speY4, speX5, speY5, speX6, speY6, speX7, speY7, speX8, speY8, speX9, speY9; // obstacle location points.
 
-            dx = Convert.ToDouble(roller.Next(5) - 2);
-            dy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.dy = Convert.ToDouble(roller.Next(5) - 2);
 
-            x = Convert.ToDouble(roller.Next(panel1.Width));
-            y = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.x = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.y = Convert.ToDouble(roller.Next(panel1.Height));
 
-            platX = roller.Next(panel1.Width - pictureBox2.Width);
-            platY = roller.Next(panel1.Height - pictureBox2.Height);
-            pictureBox2.Location = new Point(platX, platY);
-            pictureBox2.Width = 26;
+            platX = roller.Next(panel1.Width - GlobalVar.pictureBox2.Width);
+            platY = roller.Next(panel1.Height - GlobalVar.pictureBox2.Height);
+            GlobalVar.pictureBox2.Location = new Point(platX, platY);
+            GlobalVar.pictureBox2.Width = 26;
 
-            rsdx = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-            rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-            speX = roller.Next(panel1.Width - pictureBox3.Width);
-            speY = roller.Next(panel1.Height - pictureBox3.Height);
-            pictureBox3.Location = new Point(speX, speY);
-            pictureBox3.Visible = true;
+            GlobalVar.rsx = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox3.Width));
+            GlobalVar.rsy = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox3.Height));
+            speX = roller.Next(panel1.Width - GlobalVar.pictureBox3.Width);
+            speY = roller.Next(panel1.Height - GlobalVar.pictureBox3.Height);
+            GlobalVar.pictureBox3.Location = new Point(speX, speY);
+            GlobalVar.pictureBox3.Visible = true;
 
-            rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-            rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-            speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-            speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-            pictureBox4.Location = new Point(speX1, speY1);
-            //pictureBox4.BackgroundImage = imageList1.Images[3];
-            //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Visible = true;
+            GlobalVar.rsx1 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox4.Width));
+            GlobalVar.rsy1 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox4.Height));
+            speX1 = roller.Next(panel1.Width - GlobalVar.pictureBox4.Width);
+            speY1 = roller.Next(panel1.Height - GlobalVar.pictureBox4.Height);
+            GlobalVar.pictureBox4.Location = new Point(speX1, speY1);
+            //GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            //GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox4.Visible = true;
 
-            rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-            rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-            speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-            speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-            pictureBox5.Location = new Point(speX2, speY2);
-            //pictureBox5.BackgroundImage = imageList1.Images[4];
-            //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Visible = true;
+            GlobalVar.rsx2 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox5.Width));
+            GlobalVar.rsy2 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox5.Height));
+            speX2 = roller.Next(panel1.Width - GlobalVar.pictureBox5.Width);
+            speY2 = roller.Next(panel1.Height - GlobalVar.pictureBox5.Height);
+            GlobalVar.pictureBox5.Location = new Point(speX2, speY2);
+            //GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            //GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox5.Visible = true;
 
-            rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx3 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy3 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx3 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox6.Width));
-            rsy3 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox6.Height));
-            speX3 = roller.Next(panel1.Width - pictureBox6.Width);
-            speY3 = roller.Next(panel1.Height - pictureBox6.Height);
-            pictureBox6.Location = new Point(speX3, speY3);
-            //pictureBox6.BackgroundImage = imageList1.Images[5];
-            //pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Visible = true;
+            GlobalVar.rsx3 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox6.Width));
+            GlobalVar.rsy3 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox6.Height));
+            speX3 = roller.Next(panel1.Width - GlobalVar.pictureBox6.Width);
+            speY3 = roller.Next(panel1.Height - GlobalVar.pictureBox6.Height);
+            GlobalVar.pictureBox6.Location = new Point(speX3, speY3);
+            //GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            //GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox6.Visible = true;
 
-            rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx4 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy4 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx4 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox7.Width));
-            rsy4 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox7.Height));
-            speX4 = roller.Next(panel1.Width - pictureBox7.Width);
-            speY4 = roller.Next(panel1.Height - pictureBox7.Height);
-            pictureBox7.Location = new Point(speX4, speY4);
-            //pictureBox7.BackgroundImage = imageList1.Images[6];
-            //pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Visible = true;
+            GlobalVar.rsx4 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox7.Width));
+            GlobalVar.rsy4 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox7.Height));
+            speX4 = roller.Next(panel1.Width - GlobalVar.pictureBox7.Width);
+            speY4 = roller.Next(panel1.Height - GlobalVar.pictureBox7.Height);
+            GlobalVar.pictureBox7.Location = new Point(speX4, speY4);
+            //GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            //GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox7.Visible = true;
 
-            rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx5 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy5 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx5 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox8.Width));
-            rsy5 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox8.Height));
-            speX5 = roller.Next(panel1.Width - pictureBox8.Width);
-            speY5 = roller.Next(panel1.Height - pictureBox8.Height);
-            pictureBox8.Location = new Point(speX5, speY5);
-            //pictureBox8.BackgroundImage = imageList1.Images[7];
-            //pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Visible = true;
+            GlobalVar.rsx5 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox8.Width));
+            GlobalVar.rsy5 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox8.Height));
+            speX5 = roller.Next(panel1.Width - GlobalVar.pictureBox8.Width);
+            speY5 = roller.Next(panel1.Height - GlobalVar.pictureBox8.Height);
+            GlobalVar.pictureBox8.Location = new Point(speX5, speY5);
+            //GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            //GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox8.Visible = true;
 
-            rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx6 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox9.Width));
-            rsy6 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox9.Height));
-            speX6 = roller.Next(panel1.Width - pictureBox9.Width);
-            speY6 = roller.Next(panel1.Height - pictureBox9.Height);
-            pictureBox9.Location = new Point(speX6, speY6);
-            //pictureBox9.BackgroundImage = imageList1.Images[8];
-            //pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Visible = true;
+            GlobalVar.rsx6 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox9.Width));
+            GlobalVar.rsy6 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox9.Height));
+            speX6 = roller.Next(panel1.Width - GlobalVar.pictureBox9.Width);
+            speY6 = roller.Next(panel1.Height - GlobalVar.pictureBox9.Height);
+            GlobalVar.pictureBox9.Location = new Point(speX6, speY6);
+            //GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            //GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox9.Visible = true;
 
-            rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx7 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox10.Width));
-            rsy7 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox10.Height));
-            speX7 = roller.Next(panel1.Width - pictureBox10.Width);
-            speY7 = roller.Next(panel1.Height - pictureBox10.Height);
-            pictureBox10.Location = new Point(speX7, speY7);
-            //pictureBox10.BackgroundImage = imageList1.Images[9];
-            //pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Visible = true;
+            GlobalVar.rsx7 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox10.Width));
+            GlobalVar.rsy7 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox10.Height));
+            speX7 = roller.Next(panel1.Width - GlobalVar.pictureBox10.Width);
+            speY7 = roller.Next(panel1.Height - GlobalVar.pictureBox10.Height);
+            GlobalVar.pictureBox10.Location = new Point(speX7, speY7);
+            //GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[9];
+            //GlobalVar.pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox10.Visible = true;
 
-            rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx8 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy8 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx8 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox11.Width));
-            rsy8 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox11.Height));
-            speX8 = roller.Next(panel1.Width - pictureBox11.Width);
-            speY8 = roller.Next(panel1.Height - pictureBox11.Height);
-            pictureBox11.Location = new Point(speX8, speY8);
-            //pictureBox11.BackgroundImage = imageList1.Images[10];
-            //pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Visible = true;
+            GlobalVar.rsx8 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox11.Width));
+            GlobalVar.rsy8 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox11.Height));
+            speX8 = roller.Next(panel1.Width - GlobalVar.pictureBox11.Width);
+            speY8 = roller.Next(panel1.Height - GlobalVar.pictureBox11.Height);
+            GlobalVar.pictureBox11.Location = new Point(speX8, speY8);
+            //GlobalVar.pictureBox11.BackgroundImage = imageList1.Images[10];
+            //GlobalVar.pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox11.Visible = true;
 
-            rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
-            rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdx9 = Convert.ToDouble(roller.Next(5) - 2);
+            GlobalVar.rsdy9 = Convert.ToDouble(roller.Next(5) - 2);
 
-            rsx9 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox12.Width));
-            rsy9 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox12.Height));
-            speX9 = roller.Next(panel1.Width - pictureBox12.Width);
-            speY9 = roller.Next(panel1.Height - pictureBox12.Height);
-            pictureBox12.Location = new Point(speX9, speY9);
-            //pictureBox12.BackgroundImage = imageList1.Images[11];
-            //pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Visible = true;
+            GlobalVar.rsx9 = Convert.ToDouble(roller.Next(panel1.Width - GlobalVar.pictureBox12.Width));
+            GlobalVar.rsy9 = Convert.ToDouble(roller.Next(panel1.Height - GlobalVar.pictureBox12.Height));
+            speX9 = roller.Next(panel1.Width - GlobalVar.pictureBox12.Width);
+            speY9 = roller.Next(panel1.Height - GlobalVar.pictureBox12.Height);
+            GlobalVar.pictureBox12.Location = new Point(speX9, speY9);
+            //GlobalVar.pictureBox12.BackgroundImage = imageList1.Images[11];
+            //GlobalVar.pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
+            GlobalVar.pictureBox12.Visible = true;
         }
 
-        //public void initLvlThirdteen()
-        //{
-        //    Random roller = new Random();
-        //    int platX, platY; // platform location points.
-        //    int speX, speY, speX1, speY1, speX2, speY2; // spetacle location points.
-
-        //    dx = Convert.ToDouble(roller.Next(5) - 2);
-        //    dy = Convert.ToDouble(roller.Next(5) - 2);
-
-        //    x = Convert.ToDouble(roller.Next(panel1.Width));
-        //    y = Convert.ToDouble(roller.Next(panel1.Height));
-
-        //    platX = roller.Next(panel1.Width - pictureBox2.Width);
-        //    platY = roller.Next(panel1.Height - pictureBox2.Height);
-        //    pictureBox2.Location = new Point(platX, platY);
-        //    pictureBox2.Width = 26;
-
-        //    rsdx = Convert.ToDouble(roller.Next(5) - 2);
-        //    rsdy = Convert.ToDouble(roller.Next(5) - 2);
-
-        //    rsx = Convert.ToDouble(roller.Next(panel1.Width - pictureBox3.Width));
-        //    rsy = Convert.ToDouble(roller.Next(panel1.Height - pictureBox3.Height));
-        //    speX = roller.Next(panel1.Width - pictureBox3.Width);
-        //    speY = roller.Next(panel1.Height - pictureBox3.Height);
-        //    pictureBox3.Location = new Point(speX, speY);
-        //    pictureBox3.Visible = true;
-
-        //    rsdx1 = Convert.ToDouble(roller.Next(5) - 2);
-        //    rsdy1 = Convert.ToDouble(roller.Next(5) - 2);
-
-        //    rsx1 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox4.Width));
-        //    rsy1 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox4.Height));
-        //    speX1 = roller.Next(panel1.Width - pictureBox4.Width);
-        //    speY1 = roller.Next(panel1.Height - pictureBox4.Height);
-        //    pictureBox4.Location = new Point(speX1, speY1);
-        //    //pictureBox4.BackgroundImage = imageList1.Images[3];
-        //    //pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-        //    pictureBox4.Visible = true;
-
-        //    rsdx2 = Convert.ToDouble(roller.Next(5) - 2);
-        //    rsdy2 = Convert.ToDouble(roller.Next(5) - 2);
-
-        //    rsx2 = Convert.ToDouble(roller.Next(panel1.Width - pictureBox5.Width));
-        //    rsy2 = Convert.ToDouble(roller.Next(panel1.Height - pictureBox5.Height));
-        //    speX2 = roller.Next(panel1.Width - pictureBox5.Width);
-        //    speY2 = roller.Next(panel1.Height - pictureBox5.Height);
-        //    pictureBox5.Location = new Point(speX2, speY2);
-        //    //pictureBox5.BackgroundImage = imageList1.Images[4];
-        //    //pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-        //    pictureBox5.Visible = true;
-        //    pictureBox6.Visible = false;
-        //    pictureBox7.Visible = false;
-        //    pictureBox8.Visible = false;
-        //    pictureBox9.Visible = false;
-        //    pictureBox10.Visible = false;
-        //    pictureBox11.Visible = false;
-        //    pictureBox12.Visible = false;
-        //}
     } // end class
 } // end Namespace
