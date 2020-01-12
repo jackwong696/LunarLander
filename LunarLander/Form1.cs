@@ -12,41 +12,6 @@ namespace LunarLander
 {
     public partial class Form1 : Form
     {
-        // private double x, y; // ships location points
-        // private double dx, dy; // ships displacement
-        // private double rsx, rsy, rsx1, rsy1, rsx2, rsy2, rsx3, rsy3, rsx4, rsy4, rsx5, rsy5, rsx6, rsy6, rsx7, rsy7, rsx8, rsy8, rsx9, rsy9; // obstacles location points
-        // private double rsdx, rsdy, rsdx1, rsdy1, rsdx2, rsdy2, rsdx3, rsdy3, rsdx4, rsdy4, rsdx5, rsdy5, rsdx6, rsdy6, rsdx7, rsdy7, rsdx8, rsdy8, rsdx9, rsdy9; // obstacles displacement 
-        // private int fuel = 9999999;
-        // private int ships = 5;
-        // private int score = 0;
-        // private int level = 14;
-
-        //Rectangle rLander;
-        //Rectangle rPlatform;
-        //Rectangle rObstacle;
-        //Rectangle rObstacle1;
-        //Rectangle rObstacle2;
-        //Rectangle rObstacle3;
-        //Rectangle rObstacle4;
-        //Rectangle rObstacle5;
-        //Rectangle rObstacle6;
-        //Rectangle rObstacle7;
-        //Rectangle rObstacle8;
-        //Rectangle rObstacle9;
-
-        //PictureBox GlobalVar.pictureBox1 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox2 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox3 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox4 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox5 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox6 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox7 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox8 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox9 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox10 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox11 = new PictureBox();
-        //PictureBox GlobalVar.pictureBox12 = new PictureBox();
-
         public Form1()
         {
             InitializeComponent();
@@ -66,6 +31,23 @@ namespace LunarLander
 
             GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
 
+            // check if addon exist, if not exist create addon
+            if(GlobalVar.addOnExist == false)
+            {
+                createAddOn();
+                GlobalVar.addOnExist = true;
+            }
+            // check addon collide
+            if (GlobalVar.addOnItem == 0)
+            {
+                checkAddOnCollide(GlobalVar.fuelPic);
+            }
+            else
+            {
+                checkAddOnCollide(GlobalVar.shipPic);
+            }
+
+            // move obstacles
             switch (GlobalVar.level)
             {
                 case 1:
@@ -115,6 +97,7 @@ namespace LunarLander
                     break;
             }
             moveShip();
+            // check obstacles collition
             switch (GlobalVar.level)
             {
                 case 1:
@@ -167,6 +150,83 @@ namespace LunarLander
             showStats();
         } // end timer tick
 
+        private void createAddOn()
+        {
+            Random roller = new Random();
+            int fuelOrShip = roller.Next(100);
+
+            // 0 = fuel
+            // 1 = ship
+            if (fuelOrShip > 2)
+            {
+                GlobalVar.addOnItem = 0;
+                initFuelAddOn();
+                moveAddOn(GlobalVar.fuelPic);
+            }
+            else
+            {
+                GlobalVar.addOnItem = 1;
+                initShipAddOn();
+                moveAddOn(GlobalVar.shipPic);
+            }
+        }
+        private void moveAddOn(PictureBox addOnPic)
+        {
+            Random roller = new Random();
+
+            GlobalVar.aodx = Convert.ToDouble(roller.Next(5) - 2) / 2;
+            GlobalVar.aody = Convert.ToDouble(roller.Next(5) - 2) / 2;
+
+            GlobalVar.aox += GlobalVar.aodx;
+            if (GlobalVar.aox > panel1.Width - addOnPic.Width)
+            {
+                GlobalVar.aox = 0;
+            } // end if
+            if (GlobalVar.aox < 0)
+            {
+                GlobalVar.aox = Convert.ToDouble(panel1.Width - addOnPic.Width);
+            } // end if
+
+            GlobalVar.aoy += GlobalVar.aody;
+            if (GlobalVar.aoy > this.Height - addOnPic.Height)
+            {
+                GlobalVar.aoy = 0;
+            } // end if 
+            if (GlobalVar.aoy < 0)
+            {
+                GlobalVar.aoy = Convert.ToDouble(panel1.Height - addOnPic.Height);
+            } // end if
+
+            addOnPic.Location = new Point(Convert.ToInt32(GlobalVar.aox), Convert.ToInt32(GlobalVar.aoy));
+        }
+        private void checkAddOnCollide(PictureBox addOnPic)
+        {
+            GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
+            if (addOnPic.Name == "fuelPic")
+            {
+                GlobalVar.rFuelAddOn = addOnPic.Bounds;
+
+                if (GlobalVar.rLander.IntersectsWith(GlobalVar.rFuelAddOn))
+                {
+                    this.panel1.Controls.Remove(addOnPic);
+                    GlobalVar.fuel += 1000;
+                    GlobalVar.addOnExist = false;
+                } // end if
+            }
+            else
+            {
+                GlobalVar.rShipAddOn = addOnPic.Bounds;
+
+                if (GlobalVar.rLander.IntersectsWith(GlobalVar.rShipAddOn))
+                {
+                    this.panel1.Controls.Remove(addOnPic);
+                    GlobalVar.ships += 1;
+                    GlobalVar.addOnExist = false;
+                } // end if
+            }
+
+        }
+
         private void moveObstacleOne()
         {
             Random roller = new Random();
@@ -196,7 +256,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox3.Location = new Point(Convert.ToInt32(GlobalVar.rsx), Convert.ToInt32(GlobalVar.rsy));
         }
-
         private void moveObstacleTwo()
         {
             Random roller = new Random();
@@ -251,7 +310,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox4.Location = new Point(Convert.ToInt32(GlobalVar.rsx1), Convert.ToInt32(GlobalVar.rsy1));
         }
-
         private void moveObstacleThree()
         {
             Random roller = new Random();
@@ -331,7 +389,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox5.Location = new Point(Convert.ToInt32(GlobalVar.rsx2), Convert.ToInt32(GlobalVar.rsy2));
         }
-
         private void moveObstacleFour()
         {
             Random roller = new Random();
@@ -436,7 +493,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox6.Location = new Point(Convert.ToInt32(GlobalVar.rsx3), Convert.ToInt32(GlobalVar.rsy3));
         }
-
         private void moveObstacleFive()
         {
             Random roller = new Random();
@@ -566,7 +622,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox7.Location = new Point(Convert.ToInt32(GlobalVar.rsx4), Convert.ToInt32(GlobalVar.rsy4));
         }
-
         private void moveObstacleSix()
         {
             Random roller = new Random();
@@ -721,7 +776,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
         }
-
         private void moveObstacleSeven()
         {
             Random roller = new Random();
@@ -901,7 +955,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
         }
-
         private void moveObstacleEight()
         {
             Random roller = new Random();
@@ -1106,7 +1159,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox10.Location = new Point(Convert.ToInt32(GlobalVar.rsx7), Convert.ToInt32(GlobalVar.rsy7));
         }
-
         private void moveObstacleNine()
         {
             Random roller = new Random();
@@ -1311,7 +1363,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox10.Location = new Point(Convert.ToInt32(GlobalVar.rsx7), Convert.ToInt32(GlobalVar.rsy7));
         }
-
         private void moveObstacleTen()
         {
             Random roller = new Random();
@@ -1566,7 +1617,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox12.Location = new Point(Convert.ToInt32(GlobalVar.rsx9), Convert.ToInt32(GlobalVar.rsy9));
         }
-
         private void moveObstacleOneWithSpeed()
         {
             Random roller = new Random();
@@ -1871,7 +1921,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideTwo()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -1888,7 +1937,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideThree()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -1905,7 +1953,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideFour()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -1923,7 +1970,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideFive()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -1942,7 +1988,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideSix()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -1961,8 +2006,7 @@ namespace LunarLander
                 killShip();
                 initGame();
             } // end if
-        }
-        
+        }        
         private void checkCollideSeven()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -1982,8 +2026,7 @@ namespace LunarLander
                 killShip();
                 initGame();
             } // end if
-        }
-        
+        }        
         private void checkCollideEight()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -2005,7 +2048,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideNine()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -2028,7 +2070,6 @@ namespace LunarLander
                 initGame();
             } // end if
         }
-
         private void checkCollideTen()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -2359,6 +2400,44 @@ namespace LunarLander
             this.panel1.Controls.Add(GlobalVar.pictureBox2);
         }
 
+        public void initFuelAddOn()
+        {
+            GlobalVar.fuelPic.Location = new System.Drawing.Point(206, 103);
+            GlobalVar.fuelPic.Name = "fuelPic";
+            GlobalVar.fuelPic.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.fuelPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.fuelPic.TabIndex = 1;
+            GlobalVar.fuelPic.TabStop = false;
+            GlobalVar.fuelPic.BackgroundImage = imageList1.Images[4];
+            GlobalVar.fuelPic.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.fuelPic);
+
+            Random roller = new Random();
+
+            GlobalVar.aox = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.aoy = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.fuelPic.Location = new Point(Convert.ToInt32(GlobalVar.aox), Convert.ToInt32(GlobalVar.aoy));
+        }
+
+        public void initShipAddOn()
+        {
+            GlobalVar.shipPic.Location = new System.Drawing.Point(206, 103);
+            GlobalVar.shipPic.Name = "shipPic";
+            GlobalVar.shipPic.Size = new System.Drawing.Size(20, 22);
+            GlobalVar.shipPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            GlobalVar.shipPic.TabIndex = 1;
+            GlobalVar.shipPic.TabStop = false;
+            GlobalVar.shipPic.BackgroundImage = imageList1.Images[5];
+            GlobalVar.shipPic.BackgroundImageLayout = ImageLayout.Stretch;
+            this.panel1.Controls.Add(GlobalVar.shipPic);
+
+            Random roller = new Random();
+
+            GlobalVar.aox = Convert.ToDouble(roller.Next(panel1.Width));
+            GlobalVar.aoy = Convert.ToDouble(roller.Next(panel1.Height));
+            GlobalVar.shipPic.Location = new Point(Convert.ToInt32(GlobalVar.aox), Convert.ToInt32(GlobalVar.aoy));
+        }
+
         public void initObstacle1()
         {
             GlobalVar.pictureBox3.Location = new System.Drawing.Point(370, 50);
@@ -2371,7 +2450,6 @@ namespace LunarLander
             GlobalVar.pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox3);
         }
-
         public void initObstacle2()
         {
             GlobalVar.pictureBox4.Location = new System.Drawing.Point(370, 50);
@@ -2380,11 +2458,10 @@ namespace LunarLander
             GlobalVar.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox4.TabIndex = 10;
             GlobalVar.pictureBox4.TabStop = false;
-            GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[3];
+            GlobalVar.pictureBox4.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox4);
         }
-
         public void initObstacle3()
         {
             GlobalVar.pictureBox5.Location = new System.Drawing.Point(370, 50);
@@ -2393,11 +2470,10 @@ namespace LunarLander
             GlobalVar.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox5.TabIndex = 10;
             GlobalVar.pictureBox5.TabStop = false;
-            GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[4];
+            GlobalVar.pictureBox5.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox5);
         }
-
         public void initObstacle4()
         {
             GlobalVar.pictureBox6.Location = new System.Drawing.Point(370, 50);
@@ -2406,11 +2482,10 @@ namespace LunarLander
             GlobalVar.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox6.TabIndex = 10;
             GlobalVar.pictureBox6.TabStop = false;
-            GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[5];
+            GlobalVar.pictureBox6.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox6);
         }
-
         public void initObstacle5()
         {
             GlobalVar.pictureBox7.Location = new System.Drawing.Point(370, 50);
@@ -2419,11 +2494,10 @@ namespace LunarLander
             GlobalVar.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox7.TabIndex = 10;
             GlobalVar.pictureBox7.TabStop = false;
-            GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[6];
+            GlobalVar.pictureBox7.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox7);
         }
-
         public void initObstacle6()
         {
             GlobalVar.pictureBox8.Location = new System.Drawing.Point(370, 50);
@@ -2432,11 +2506,10 @@ namespace LunarLander
             GlobalVar.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox8.TabIndex = 10;
             GlobalVar.pictureBox8.TabStop = false;
-            GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[7];
+            GlobalVar.pictureBox8.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox8);
         }
-
         public void initObstacle7()
         {
             GlobalVar.pictureBox9.Location = new System.Drawing.Point(370, 50);
@@ -2445,11 +2518,10 @@ namespace LunarLander
             GlobalVar.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox9.TabIndex = 10;
             GlobalVar.pictureBox9.TabStop = false;
-            GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[8];
+            GlobalVar.pictureBox9.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox9);
         }
-
         public void initObstacle8()
         {
             GlobalVar.pictureBox10.Location = new System.Drawing.Point(370, 50);
@@ -2458,11 +2530,10 @@ namespace LunarLander
             GlobalVar.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox10.TabIndex = 10;
             GlobalVar.pictureBox10.TabStop = false;
-            GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[9];
+            GlobalVar.pictureBox10.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox10);
         }
-
         public void initObstacle9()
         {
             GlobalVar.pictureBox11.Location = new System.Drawing.Point(370, 50);
@@ -2471,11 +2542,10 @@ namespace LunarLander
             GlobalVar.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox11.TabIndex = 10;
             GlobalVar.pictureBox11.TabStop = false;
-            GlobalVar.pictureBox11.BackgroundImage = imageList1.Images[10];
+            GlobalVar.pictureBox11.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox11);
         }
-
         public void initObstacle10()
         {
             GlobalVar.pictureBox12.Location = new System.Drawing.Point(370, 50);
@@ -2484,10 +2554,10 @@ namespace LunarLander
             GlobalVar.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             GlobalVar.pictureBox12.TabIndex = 10;
             GlobalVar.pictureBox12.TabStop = false;
-            GlobalVar.pictureBox12.BackgroundImage = imageList1.Images[11];
+            GlobalVar.pictureBox12.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox12);
-        }
+        }  
         
         public void initLvlOne()
         {
@@ -2515,7 +2585,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlTwo()
         {
             Random roller = new Random();
@@ -2551,7 +2620,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlThree()
         {
             Random roller = new Random();
@@ -2591,7 +2659,6 @@ namespace LunarLander
             GlobalVar.pictureBox4.Visible = true;
             GlobalVar.pictureBox5.Visible = false;
         }
-
         public void initLvlFour()
         {
             Random roller = new Random();
@@ -2649,7 +2716,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlFive()
         {
             Random roller = new Random();
@@ -2719,7 +2785,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlSix()
         {
             Random roller = new Random();
@@ -2800,7 +2865,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlSeven()
         {
             Random roller = new Random();
@@ -2892,7 +2956,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlEight()
         {
             Random roller = new Random();
@@ -2995,7 +3058,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlNine()
         {
             Random roller = new Random();
@@ -3109,7 +3171,6 @@ namespace LunarLander
             GlobalVar.pictureBox11.Visible = false;
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlTen()
         {
             Random roller = new Random();
@@ -3234,7 +3295,6 @@ namespace LunarLander
 
             GlobalVar.pictureBox12.Visible = false;
         }
-
         public void initLvlEleven()
         {
             Random roller = new Random();
@@ -3369,7 +3429,6 @@ namespace LunarLander
             //GlobalVar.pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
             GlobalVar.pictureBox12.Visible = true;
         }
-
         public void initLvlTwelve()
         {
             Random roller = new Random();

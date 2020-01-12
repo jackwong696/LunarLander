@@ -52,16 +52,10 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Jellyfish.jpg");
             this.imageList1.Images.SetKeyName(1, "Desert.jpg");
-            this.imageList1.Images.SetKeyName(2, "1_1.jpg");
-            this.imageList1.Images.SetKeyName(3, "2_1.jpg");
-            this.imageList1.Images.SetKeyName(4, "3_1.jpg");
-            this.imageList1.Images.SetKeyName(5, "4_1.jpg");
-            this.imageList1.Images.SetKeyName(6, "5_1.jpg");
-            this.imageList1.Images.SetKeyName(7, "6_1.jpg");
-            this.imageList1.Images.SetKeyName(8, "7_1.jpg");
-            this.imageList1.Images.SetKeyName(9, "8_1.jpg");
-            this.imageList1.Images.SetKeyName(10, "9_1.jpg");
-            this.imageList1.Images.SetKeyName(11, "10_1.jpg");
+            this.imageList1.Images.SetKeyName(2, "asteroid.png");
+            this.imageList1.Images.SetKeyName(3, "ufo.png");
+            this.imageList1.Images.SetKeyName(4, "fuel.png");
+            this.imageList1.Images.SetKeyName(5, "spaceship_1.png");
             // 
             // timer1
             // 

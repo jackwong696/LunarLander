@@ -14,10 +14,14 @@ namespace LunarLander
         private static double _dx, _dy; // ships displacement
         private static double _rsx, _rsy, _rsx1, _rsy1, _rsx2, _rsy2, _rsx3, _rsy3, _rsx4, _rsy4, _rsx5, _rsy5, _rsx6, _rsy6, _rsx7, _rsy7, _rsx8, _rsy8, _rsx9, _rsy9; // obstacles location points
         private static double _rsdx, _rsdy, _rsdx1, _rsdy1, _rsdx2, _rsdy2, _rsdx3, _rsdy3, _rsdx4, _rsdy4, _rsdx5, _rsdy5, _rsdx6, _rsdy6, _rsdx7, _rsdy7, _rsdx8, _rsdy8, _rsdx9, _rsdy9; // obstacles displacement
+        private static double _aox, _aoy; // addon points
+        private static double _aodx, _aody; // addon displacement 
         private static int _fuel = 9999999;
         private static int _ships = 5;
         private static int _score = 0;
         private static int _level = 1;
+        private static bool _addOnExist = false;
+        private static int _addOnItem;
 
         private static Rectangle _rLander;
         private static Rectangle _rPlatform;
@@ -45,6 +49,12 @@ namespace LunarLander
         private static PictureBox _pictureBox11 = new PictureBox();
         private static PictureBox _pictureBox12 = new PictureBox();
 
+        private static Rectangle _rFuelAddOn;
+        private static Rectangle _rShipAddOn;
+
+        private static PictureBox _fuelPic = new PictureBox();
+        private static PictureBox _shipPic = new PictureBox();
+        
         public static double x
         {
             get { return _x; }
@@ -414,5 +424,61 @@ namespace LunarLander
             get { return _pictureBox12; }
             set { _pictureBox12 = value; }
         }
+
+        public static double aox
+        {
+            get { return _aox; }
+            set { _aox = value; }
+        }
+        public static double aoy
+        {
+            get { return _aoy; }
+            set { _aoy = value; }
+        }
+        public static double aodx
+        {
+            get { return _aodx; }
+            set { _aodx = value; }
+        }
+        public static double aody
+        {
+            get { return _aody; }
+            set { _aody = value; }
+        }
+
+        public static Rectangle rFuelAddOn
+        {
+            get { return _rFuelAddOn; }
+            set { _rFuelAddOn = value; }
+        }
+        public static Rectangle rShipAddOn
+        {
+            get { return _rShipAddOn; }
+            set { _rShipAddOn = value; }
+        }
+
+        public static PictureBox fuelPic
+        {
+            get { return _fuelPic; }
+            set { _fuelPic = value; }
+        }
+        public static PictureBox shipPic
+        {
+            get { return _shipPic; }
+            set { _shipPic = value; }
+        }
+
+        public static bool addOnExist
+        {
+            get { return _addOnExist; }
+            set { _addOnExist = value; }
+        }
+
+        public static int addOnItem
+        {
+            get { return _addOnItem; }
+            set { _addOnItem = value; }
+        }
+
     }
 }
