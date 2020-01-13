@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace LunarLander
 {
@@ -54,7 +55,9 @@ namespace LunarLander
 
         private static PictureBox _fuelPic = new PictureBox();
         private static PictureBox _shipPic = new PictureBox();
-        
+
+        private static SoundPlayer _player;
+
         public static double x
         {
             get { return _x; }
@@ -480,5 +483,14 @@ namespace LunarLander
             set { _addOnItem = value; }
         }
 
+        public static SoundPlayer player
+        {
+            get { return _player; }
+        }
+
+        public static void GetPlayerSound(string wavFileName)
+        {
+            _player = new SoundPlayer(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Sound\\" + wavFileName);
+        }
     }
 }

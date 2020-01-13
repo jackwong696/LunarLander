@@ -29,10 +29,8 @@ namespace LunarLander
 
             GlobalVar.score += 100;
 
-            GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
-
             // check if addon exist, if not exist create addon
-            if(GlobalVar.addOnExist == false)
+            if (GlobalVar.addOnExist == false)
             {
                 createAddOn();
                 GlobalVar.addOnExist = true;
@@ -208,9 +206,12 @@ namespace LunarLander
 
                 if (GlobalVar.rLander.IntersectsWith(GlobalVar.rFuelAddOn))
                 {
+                    GlobalVar.GetPlayerSound("Addon.wav");
+                    GlobalVar.player.Play();
                     this.panel1.Controls.Remove(addOnPic);
                     GlobalVar.fuel += 1000;
                     GlobalVar.addOnExist = false;
+                    //GlobalVar.player.Stop();
                 } // end if
             }
             else
@@ -219,18 +220,20 @@ namespace LunarLander
 
                 if (GlobalVar.rLander.IntersectsWith(GlobalVar.rShipAddOn))
                 {
+                    GlobalVar.GetPlayerSound("Addon.wav");
+                    GlobalVar.player.Play();
                     this.panel1.Controls.Remove(addOnPic);
                     GlobalVar.ships += 1;
                     GlobalVar.addOnExist = false;
+                    //GlobalVar.player.Stop();
                 } // end if
             }
-
         }
 
         private void moveObstacleOne()
         {
             Random roller = new Random();
-            
+
             GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
             GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
@@ -259,7 +262,7 @@ namespace LunarLander
         private void moveObstacleTwo()
         {
             Random roller = new Random();
-            
+
             GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
             GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
@@ -313,7 +316,7 @@ namespace LunarLander
         private void moveObstacleThree()
         {
             Random roller = new Random();
-            
+
             GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
             GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
@@ -496,7 +499,7 @@ namespace LunarLander
         private void moveObstacleFive()
         {
             Random roller = new Random();
-            
+
             GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
             GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
@@ -625,7 +628,7 @@ namespace LunarLander
         private void moveObstacleSix()
         {
             Random roller = new Random();
-            
+
             GlobalVar.rsdx = Convert.ToDouble(roller.Next(5) - 2) / 2;
             GlobalVar.rsdy = Convert.ToDouble(roller.Next(5) - 2) / 2;
 
@@ -1133,7 +1136,7 @@ namespace LunarLander
             } // end if
 
             GlobalVar.pictureBox9.Location = new Point(Convert.ToInt32(GlobalVar.rsx6), Convert.ToInt32(GlobalVar.rsy6));
-            
+
             GlobalVar.rsdx7 = Convert.ToDouble(roller.Next(5) - 2);
             GlobalVar.rsdy7 = Convert.ToDouble(roller.Next(5) - 2);
 
@@ -1312,7 +1315,7 @@ namespace LunarLander
             } // end if
 
             GlobalVar.pictureBox8.Location = new Point(Convert.ToInt32(GlobalVar.rsx5), Convert.ToInt32(GlobalVar.rsy5));
-            
+
             GlobalVar.rsdx6 = Convert.ToDouble(roller.Next(5) - 2);
             GlobalVar.rsdy6 = Convert.ToDouble(roller.Next(5) - 2);
 
@@ -1878,7 +1881,7 @@ namespace LunarLander
 
             GlobalVar.pictureBox12.Location = new Point(Convert.ToInt32(GlobalVar.rsx9), Convert.ToInt32(GlobalVar.rsy9));
         }
-        
+
         private void moveShip()
         {
             GlobalVar.x += GlobalVar.dx;
@@ -1916,7 +1919,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -1932,7 +1939,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -1948,7 +1959,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -1965,7 +1980,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -1983,7 +2002,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -2002,11 +2025,15 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
-        }        
+        }
         private void checkCollideSeven()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -2022,11 +2049,15 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
-        }        
+        }
         private void checkCollideEight()
         {
             GlobalVar.rLander = GlobalVar.pictureBox1.Bounds;
@@ -2043,7 +2074,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -2065,7 +2100,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -2088,7 +2127,11 @@ namespace LunarLander
             {
                 timer1.Enabled = false;
 
+                GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                GlobalVar.GetPlayerSound("Explosion.wav");
+                GlobalVar.player.Play();
                 MessageBox.Show("Your ship have been collide with unknown objects!");
+                GlobalVar.player.Stop();
                 killShip();
                 initGame();
             } // end if
@@ -2109,7 +2152,10 @@ namespace LunarLander
                     {
                         //if (Math.Abs(GlobalVar.rLander.Bottom - GlobalVar.rPlatform.Top) < 3)
                         //{
+                        GlobalVar.GetPlayerSound("TaDa.wav");
+                        GlobalVar.player.Play();
                         MessageBox.Show("Good Landing!");
+                        GlobalVar.player.Stop();
                         GlobalVar.fuel += 30;
                         GlobalVar.score += 10000;
                         GlobalVar.level += 1;
@@ -2117,13 +2163,21 @@ namespace LunarLander
                     }
                     else
                     {
+                        GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                        GlobalVar.GetPlayerSound("Explosion.wav");
+                        GlobalVar.player.Play();
                         MessageBox.Show("Too much vertical velocity!");
+                        GlobalVar.player.Stop();
                         killShip();
                     } // end vertical if
                 }
                 else
                 {
+                    GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[6];
+                    GlobalVar.GetPlayerSound("Explosion.wav");
+                    GlobalVar.player.Play();
                     MessageBox.Show("Too much horizontal velocity");
+                    GlobalVar.player.Stop();
                     killShip();
                 } // end horiz if
                 initGame();
@@ -2384,6 +2438,7 @@ namespace LunarLander
             GlobalVar.pictureBox1.Size = new System.Drawing.Size(20, 22);
             GlobalVar.pictureBox1.TabIndex = 0;
             GlobalVar.pictureBox1.TabStop = false;
+            GlobalVar.pictureBox1.BackgroundImage = imageList1.Images[0];
             this.panel1.Controls.Add(GlobalVar.pictureBox1);
         }
 
@@ -2557,8 +2612,8 @@ namespace LunarLander
             GlobalVar.pictureBox12.BackgroundImage = imageList1.Images[2];
             GlobalVar.pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
             this.panel1.Controls.Add(GlobalVar.pictureBox12);
-        }  
-        
+        }
+
         public void initLvlOne()
         {
             Random roller = new Random();

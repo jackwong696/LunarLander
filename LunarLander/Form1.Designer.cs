@@ -56,6 +56,7 @@
             this.imageList1.Images.SetKeyName(3, "ufo.png");
             this.imageList1.Images.SetKeyName(4, "fuel.png");
             this.imageList1.Images.SetKeyName(5, "spaceship_1.png");
+            this.imageList1.Images.SetKeyName(6, "explosion.png");
             // 
             // timer1
             // 
